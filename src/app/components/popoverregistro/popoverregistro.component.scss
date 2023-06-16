@@ -1,0 +1,30 @@
+.btn.btn-primary.buto{
+    color: rgb(255, 255, 255);
+    background: #006ca3;
+    height: 60px;
+    width: 200px;  
+    font-size: 19px; 
+    border-radius: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.btn.btn-primary.buto:hover{
+    background: #004567;
+}
+.preview-img{
+    top: 65px;
+    background-color: #f9f9f9;
+}
+.preview-img img{
+    width: 100%;
+    height: 250px;
+}
+.clear-image{   
+    position: absolute;
+    right: 0;
+    margin: .5rem;
+    font-size: 17px;
+    border:0;
+    padding: .25rem;
+    background: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

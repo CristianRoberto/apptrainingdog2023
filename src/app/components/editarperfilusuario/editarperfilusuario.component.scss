@@ -1,0 +1,32 @@
+.salir:hover{
+background: red; 
+ }
+
+ .guardar:hover{
+    background: aqua; 
+     }
+
+
+     
+
+
+.preview-img{
+   top: 65px;
+   background-color: #f9f9f9;
+}
+.preview-img img{
+   width: 100%;
+   height: 250px;
+}
+
+
+.clear-image{   
+   position: absolute;
+   right: 0;
+   margin: .5rem;
+   font-size: 17px;
+   border:0;
+   padding: .25rem;
+   background: red;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

@@ -1,0 +1,28 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card-content {
+    flex-grow: 1;
+  }
+
+  .form-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+
+  .button-total {
+   
+  }
+  
+  .button-total:hover {
+    background-color: #01393d; /* Color de fondo al pasar el cursor */
+    box-shadow: 0px 15px 20px rgba(255, 255, 255, 0.3);
+    transform: translateY(-7px);
+    color: rgb(255, 255, 255);
+  }

@@ -1,0 +1,33 @@
+.cerrar:hover{
+    color: red;
+  }
+  .adoptar:hover{
+    background-color: rgb(0, 255, 255);
+  }.card-body{
+    background:rgb(0, 60, 99); 
+    border:3px solid  rgb(255, 255, 255);
+    border-radius: 15px;
+    text-align: center;
+    width: 100%;      
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+  }
+
+  
+  .edit-button {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.2rem;
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    background: aqua;
+    padding: 0.5rem 1rem;
+  }
+  
+ 
+.mascotafoto{
+  box-shadow: 0 0 7px 5px rgb(255, 255, 255);
+}

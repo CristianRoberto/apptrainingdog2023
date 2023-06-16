@@ -1,0 +1,38 @@
+.buto{
+    background: #EFEFEF;
+    color: black; 
+    border: 1px black solid;
+}
+.botones-stilos {
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bold;
+  }
+.recuperarClave:hover{
+    background: rgba(255, 0, 0, 0.464);
+}
+.h1{
+    font-size: 28px;
+font-family: Georgia, 'Times New Roman', Times, serif
+}
+.botoniniciar{
+    background-color: rgb(35, 32, 32);
+    color: rgb(255, 255, 255);
+    background: rgb(0, 60, 99);
+    height: 60px;
+    width: 170px;  
+    font-size: 19px; 
+    border-radius: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.botoniniciar:hover{
+    background: rgb(0, 28, 51);
+}
+.underlineHover{
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.underlineHover:hover{
+    background-color:rgb(10, 145, 255);
+    color: black;
+}

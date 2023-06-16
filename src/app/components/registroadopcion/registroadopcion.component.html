@@ -1,0 +1,118 @@
+<ion-content color="dark" style="padding-top: 60px;">
+  <ion-header style="position: fixed; top: 0; left: 0; right: 0;">
+    <ion-toolbar color="dark">
+      <ion-card-header style="width: 100%; ">
+        <ion-card-title style="text-align: center;width: 100%;font-size: 21px; color: aqua; font-family: Georgia, 'Times New Roman', Times, serif;">REGISTRO ADOPCION</ion-card-title>
+      </ion-card-header>
+      <ion-buttons slot="start" color="danger" class="cerrar" (click)="exit()" style="margin-left: 10px;" >
+        
+      </ion-buttons> 
+
+      <ion-back-button></ion-back-button>
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-card-content style="margin-top: 20px; text-align: end;">  
+    <div      >
+ <svg  (click)="exit()" slot="end"   xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-x-octagon" viewBox="0 0 35 5">
+                  <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+             </div><br>
+    <div class="card-body" style="border: #d7d8da 1px solid;text-align: center;  ">
+                  <form #productForm="ngForm"  class="ion-padding">
+              <img class="mascotafoto"  src="{{mascota.foto}}" height="100px" width="180px"  style="border-radius: 20px;" ><br>
+           
+              <ion-label position="floating">Número Mascota</ion-label>
+              <ion-item color="dark">
+                <ion-input type="text" style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" placeholder={{mascota.mascota}} required name="idmascota" [(ngModel)]="elementos.idmascota" class="form-control"></ion-input>
+              </ion-item>
+            
+              <ion-label position="floating">Cédula ID</ion-label>
+              <ion-item color="dark">
+                <ion-input type="text" style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" placeholder={{user.cedula}} required name="idcedula" [(ngModel)]="elementos.idcedula" class="form-control"></ion-input>
+              </ion-item>
+            
+              <ion-label position="floating">Nombres Usuario</ion-label>
+              <ion-item color="dark">
+                <ion-input type="text" style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" placeholder={{user.nombre}} required name="nombreusuario" [(ngModel)]="elementos.nombreusuario" class="form-control"></ion-input>
+              </ion-item>
+            
+              <ion-label position="floating">Apellidos Usuario</ion-label>
+              <ion-item color="dark">
+                <ion-input type="text" style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" placeholder={{user.apellidos}} required name="apellidousuario" [(ngModel)]="elementos.apellidousuario" class="form-control"></ion-input>
+              </ion-item>
+          
+              <ion-label position="floating">Fecha de Retiro</ion-label>
+              <div style="position: relative;">
+                <ion-item color="dark">
+                  <div style="display: flex; flex-direction: column; align-items: center;">
+                    <ion-input (click)="showCalendar = true"
+                               style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; width: 100%;"
+                               placeholder="yyyy-MM-dd"
+                               required name="fecharetiro"
+                               [(ngModel)]="elementos.fecharetiro"
+                               class="form-control">
+                    </ion-input>
+                    <ion-datetime *ngIf="showCalendar"
+                                  display-format="yyyy-MM-dd"
+                                  picker-format="yyyy-MM-dd"                 
+                                  style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; width: 80%;border: aqua 3px solid;background: rgba(0, 255, 255, 0.171);"
+                                  (ionChange)="onDateSelect($event); showCalendar = false"
+                                  interface="popover">
+                    </ion-datetime>
+                  </div>
+                </ion-item>
+                              </div>
+
+                         
+
+                   
+              <ion-item color="dark">
+                <ion-label position="floating" style="text-align: center;margin: 0 auto;align-items: center;">Confirmar contraseña</ion-label>
+                <ion-input type="password" 
+                style="text-align: center; color: rgb(0, 0, 0); font-family: 
+                'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" 
+                placeholder="password" 
+                required name="password" 
+                [(ngModel)]="elementos.password" 
+                class="form-control">
+              </ion-input>
+              </ion-item>
+              <br>
+            
+              <div class="caracteristica1" *ngFor="let character of chracter">
+                <ion-card class="ion-text-center">
+                  <ion-card-content>
+                    <img src="{{character.foto}}" height="300px" width="700px">
+
+                    <ion-card-title class="card">
+                    {{character.nombreraza}}
+                    </ion-card-title>
+                  </ion-card-content>
+                </ion-card>
+                  </div>
+            
+                </form>         
+          </div>   
+     
+      <ion-row > 
+        <ion-col size="12" style="margin-top: 5px;" >
+
+          <div  class="text-right" style="width:  80%; margin: 0 auto;  ">
+
+            <ion-buttons type="button" (click)="Guardar(productForm)" slot="primary" class="edit-button" >
+              <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-save2" viewBox="0 0 25 1">
+                <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v4.5h2a.5.5 0 0 1 .354.854l-2.5 2.5a.5.5 0 0 1-.708 0l-2.5-2.5A.5.5 0 0 1 5.5 6.5h2V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+              </svg>              <ion-label style=" width: 80% ; text-align: center;">Confirmar Adopcion</ion-label>
+            </ion-buttons>
+
+          </div>
+        </ion-col>
+      </ion-row>
+  
+
+       
+  </ion-card-content>
+
+</ion-content>

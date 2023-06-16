@@ -1,0 +1,55 @@
+    .button-total {
+      font-size: 14px; /* Cambiar el tamaño de la tipografía */
+      text-transform: uppercase; /* Texto en mayúsculas */
+      font-weight: bold; /* Fuente en negrita o bold */
+      color: #ffffff; /* Color del texto */
+      border-radius: 5px; /* Borde del botón */
+      background-color: #0015ffd8; /* Color de fondo */
+      padding: 18px 30px; /* Relleno del botón */
+      position: fixed;
+      width: 100%;
+      bottom: 0px;
+      border: #00eeff 3px solid;
+    }
+    
+    .button-total:hover {
+      background-color: #00eeff; /* Color de fondo al pasar el cursor */
+      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-7px);
+      color: black;
+    }
+    
+    .centered-p {
+      width: 300px;
+      margin-top: 13px;
+    }
+    
+    ion-img {
+      height: 100px;
+    }
+    
+    .is {
+      font-size: 25px;
+      position: absolute;
+      right: 6%;
+      bottom: 30%;
+    }
+    
+    .precio {
+      font-size: 16px;
+    }
+    
+    .chip {
+      float: right;
+      bottom: -30%;
+    }
+    
+    .md .centered-p {
+      text-align: center;
+      margin-left: -15%;
+    }
+    
+    .vermas:hover {
+      background: aqua;
+    }
+    

@@ -1,0 +1,126 @@
+<ion-content color="dark" >
+
+  <ion-header style="position: fixed; top: 0; left: 0; right: 0;">
+    <ion-toolbar color="dark">
+      <ion-card-header >
+        <ion-card-title style="text-align: center; color: aqua; font-family: Georgia, 'Times New Roman', Times, serif;">Editar Perfil</ion-card-title>
+      </ion-card-header>
+      
+
+        <ion-back-button></ion-back-button>
+
+    </ion-toolbar>
+    
+      
+  </ion-header>
+
+    <ion-card-content >
+ 
+      <form #productForm="ngForm" >
+        <div class="form-group row">
+          <div >           
+            <ion-item>
+              <ion-icon slot="start" name="albums-outline"></ion-icon>
+              <ion-input type="text" maxlength="10" minlength="10"pattern="[0-9]+" placeholder="Cedula"  required name="cedula" [(ngModel)]="elementos.cedula"  class="fadeIn second" ></ion-input>
+            </ion-item>
+            </div>
+        </div>   
+        
+        <div class="form-group row">
+          <div>           
+            <ion-item>
+              <ion-icon slot="start" name="at"></ion-icon>          
+                        <ion-input type="text"  placeholder="CorroElectronico"  required name="correoelectronico" [(ngModel)]="elementos.correoelectronico"  class="fadeIn second" ></ion-input>
+            </ion-item>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+          <div >           
+            <ion-item>
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-input type="text" placeholder="Nombres" required name="nombre" [(ngModel)]="elementos.nombre"  class="fadeIn second" ></ion-input>
+            </ion-item>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+          <div >           
+            <ion-item>
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-input type="text" placeholder="Apellidos" required name="apellidos" [(ngModel)]="elementos.apellidos"  class="fadeIn second" ></ion-input>
+            </ion-item>
+            </div>
+        </div>
+
+        <div class="form-group row">
+          <div>           
+            <ion-item>
+              <ion-icon slot="start"  name="trail-sign-outline"></ion-icon>
+              <ion-input type="text" placeholder="Direccion" required name="direccion" [(ngModel)]="elementos.direccion" class="fadeIn second" ></ion-input>
+            </ion-item>
+            </div>
+        </div>
+
+        <div class="form-group row">
+          <div >           
+            <ion-item>
+              <ion-icon slot="start" name="phone-portrait-outline"></ion-icon>
+              <ion-input type="text" maxlength="10" minlength="10" pattern="[0-9]+" placeholder="Telefono" required name="telefono" [(ngModel)]="elementos.telefono"  class="fadeIn second" ></ion-input>
+            </ion-item>
+            </div>
+        </div>
+
+        <div class="form-group row">
+          <div>           
+            <ion-item>
+              <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+              <ion-input type="password" placeholder="Contraseña" required name="password" [(ngModel)]="elementos.password"  class="fadeIn second" ></ion-input>
+            </ion-item>
+            </div>
+        </div>
+
+      <div class="form-group row">
+        <label  class="col-sm-4 col-form-label" style="text-align: center; color: white;">Foto</label>
+        <div >
+          <input  (change)="cargaArchivo2($event)" type="file"   required  name="formato"  [(ngModel)]="elementos.formato"    class="form-control-file">
+        </div>
+      </div>
+      <div class="preview-img" *ngIf="previsualizacion">
+        <button class="clear-image" type="button" (click)="clearImage()">Borrar</button>
+        <img  [src]="previsualizacion" alt="">
+    </div>
+    <br>
+  
+    <button class="guardar"    slot="start" color="danger"   (click)="onUpdateUsuario(elementos.cedula, elementos.correoelectronico, elementos.nombre, elementos.apellidos, elementos.direccion, elementos.telefono, elementos.password, elementos.foto)" style="margin-left: 10px; text-align: center; height: 40px; width: 100%;  margin-left: auto; margin-right: auto; display: block; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Guardar Cambios
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-octagon" viewBox="0 0 16 16">
+        <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
+        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+      </svg>
+  
+  
+  </button><br>
+
+
+
+    <button class="salir"    slot="start" color="danger"  (click)="exit()" style="margin-left: 10px; text-align: center; height: 40px; width: 100%;  margin-left: auto; margin-right: auto; display: block; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Salir
+    
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-octagon" viewBox="0 0 16 16">
+          <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg>
+    
+    
+    </button><br>
+    
+ 
+  
+
+        </form> 
+
+    </ion-card-content>
+
+</ion-content>

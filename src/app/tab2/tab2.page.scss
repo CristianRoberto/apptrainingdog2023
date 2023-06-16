@@ -1,0 +1,77 @@
+  .slider-title {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+  }  
+  .slider8 {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .story-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 2px solid #00FFFF;
+    border-radius: 10px;
+    background-color: rgba(0, 255, 255, 0.154);
+    box-shadow: 0 0 1px 2px rgb(255, 255, 255);
+    width: 100%;
+    margin-left: 13px; 
+      transition: transform 0.5s ease-in-out;
+  }    
+  .story-card:hover {
+    transform: scale(1.08);
+  }
+    .story-card-image {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  .story-card-image img {
+
+height: 100px; 
+width: 1000px;
+
+}
+  
+  .story-card-title {
+    font-size: 10px;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 10px;
+  }
+  
+/* Estrellas*/
+label{ color:rgb(41, 30, 30);
+  font-size: 25px;
+  }
+/* Estrellas*/
+label{ color:rgb(28, 22, 22);
+  font-size: 25px;
+  }
+  input[type = "radio"]{ display:none;}
+  .clasificacion{
+      direction: rtl;/* right to left */
+      unicode-bidi: bidi-override;/* bidi de bidireccional */
+  }
+  label:hover{color:orange;}
+  label:hover ~ label{color:orange;}
+  input[type = "radio"]:checked ~ label{color:orange;}
+  /*div estrellas */
+  
+    .todo {
+  margin: 0 auto;
+    }  
+
+    .star{
+  margin: 0 auto;
+    }
+  /*imagen*/
+  .imgs
+  {height:200px; margin: 0px;
+      float: left;
+      width: 40%;
+      background: rgba(0, 255, 255, 0.246);
+  }
+  
