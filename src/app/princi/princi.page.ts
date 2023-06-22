@@ -58,17 +58,7 @@ export class PrinciPage implements OnInit {
     }
  
 
- 
- 
-
-
-
-
-
-
-
-    //realiza la busqueda en la base de datos llama al servicio
-    
+    //realiza la busqueda en la base de datos llama al servicio   
     async search(): Promise<void>{
       const loading = await this.loadingController.create({ message: 'Cargando...' });
         await loading.present();
@@ -92,10 +82,6 @@ export class PrinciPage implements OnInit {
       }, 2000);
     };
   
-
-
-
-
     async presentToast(message:any) {
       const toast = await this.toast.create({
         message: message,
@@ -104,10 +90,7 @@ export class PrinciPage implements OnInit {
       toast.present();
     }
 
-
-
-    async Ingresarlogin(){
-     
+    async Ingresarlogin(){   
       const alert = await this.alertController.create({
         header: 'Error, Iniciar Seccion ',
         message: 'Para Realizar una adopcion canina debe iniciar seccion con su usuario o registrarse.',
@@ -115,10 +98,6 @@ export class PrinciPage implements OnInit {
       await alert.present();
       
     }
-
-
-
-
   //botonComponenteIrLogin
   //botonComponenteIrLogin
   async login(){
@@ -150,11 +129,7 @@ export class PrinciPage implements OnInit {
     return await alert.present()
           
   }
-
-
-
-  //botonComponenteIrRegistro
-  
+  //botonComponenteIrRegistro  
   async regstro(){
     const alert2 = await this.popover.create({
       component: PopoverregistroComponent,
@@ -174,9 +149,4 @@ export class PrinciPage implements OnInit {
    });
   return await alert2.present()
  }
-
-
-
-
-
 }

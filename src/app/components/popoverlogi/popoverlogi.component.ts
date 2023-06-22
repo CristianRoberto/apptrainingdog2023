@@ -116,14 +116,12 @@ export class PopoverlogiComponent implements OnInit {
           const alert = await this.alertController.create({
             header: 'Recuperar Contraseña  ',
             message: 'Se ha enviado a su correo electrónico instrucciones para restablecer contraseña ',
-  
           });         
            await alert.present();
-  
           }
       }, (error: any) => {
         console.log(error);
-        this.presentToast('Ingresar Correo Electronico');
+        this.presentToast('Error de Conexion Servidor');
       });
     }
   };
