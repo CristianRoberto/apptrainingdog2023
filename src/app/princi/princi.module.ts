@@ -17,4 +17,4 @@ import { PrinciPage } from './princi.page';
   ],
   declarations: [PrinciPage]
 })
-export class PrinciPageModule {}
+export class PrinciPageModule { }

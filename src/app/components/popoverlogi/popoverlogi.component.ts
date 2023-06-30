@@ -14,8 +14,6 @@ import { AlertController, NavController } from '@ionic/angular';
   styleUrls: ['./popoverlogi.component.scss'],
 })
 export class PopoverlogiComponent implements OnInit {
-
-  
   formulario:any= FormGroup<any>;
   mensaje:string="";
   datos: any;
@@ -27,7 +25,6 @@ export class PopoverlogiComponent implements OnInit {
     public popover: PopoverController,
     public loadingController: LoadingController,
     public alertController: AlertController,
-
      private storage:StorageService) {
   //aqi se hace llamado a los datos que se envian del from
     this.formulario=this.form.group({
@@ -37,9 +34,7 @@ export class PopoverlogiComponent implements OnInit {
      });
   }
  
-
-  ngOnInit(){
-  
+  ngOnInit(){  
   }
   
     //if(this.storage.getCurrentUser()){
@@ -51,11 +46,8 @@ export class PopoverlogiComponent implements OnInit {
       this.popover.dismiss(); 
     }
 
-  
     async ValidarLogin(): Promise<any>{
-    
   if(this.formulario.valid){      
-
    this.servicio.Token().subscribe(token=>{
          this.token=token;
          this.servicio.ValidarLogin(this.formulario.get("usuario").value, this.formulario.get("password").value,this.token).subscribe(async datos=>{
@@ -124,7 +116,5 @@ export class PopoverlogiComponent implements OnInit {
         this.presentToast('Error de Conexion Servidor');
       });
     }
-  };
-  
-  
+  }; 
 }
