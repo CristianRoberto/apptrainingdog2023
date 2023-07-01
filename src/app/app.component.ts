@@ -75,19 +75,20 @@ export class AppComponent implements OnInit {
 
      async salir(){
       const alert = await this.alertController.create({
+        cssClass: 'custom-alert',
         header: 'Salir',
         message: '¿Deberitas te quieres salir?',
         buttons: [
           {
             text: 'No mejor no',
+            cssClass: 'custom-button adopt-button',
             handler: () => {
-              
             }
           }, {
             text: 'Sii',
+            cssClass: 'custom-button salir-button',
             handler: () => {
               localStorage.clear();
-           //   location.reload(true)
               this.navCtrl.navigateRoot('princi');
             }
           }
@@ -96,11 +97,4 @@ export class AppComponent implements OnInit {
   
       await alert.present();
     }
-  
-  
-
-
-
-
-
 }

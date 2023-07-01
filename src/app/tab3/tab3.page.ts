@@ -38,8 +38,6 @@ export class Tab3Page  implements OnInit {
     }, 2000);
   };
 
-
-
   async search(): Promise<void>{
     const loading = await this.loadingController.create({ message: 'Cargando...' });
       await loading.present();
