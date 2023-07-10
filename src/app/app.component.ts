@@ -13,48 +13,77 @@ import { PopoverregistroComponent } from 'src/app/components/popoverregistro/pop
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
- 
+  esAdministrador: boolean = false;
   navigate!: { title: string; url: string; icon: string; }[];
 
-  sideMenu()
-  {
-    this.navigate =
-    [      
+  ROLES = {
+    USUARIO: 'usuario',
+    ADMINISTRADOR: 'administrador'
+  };
 
-      {
-        title : "Inicio Usuario",
-        url   : "/tabs/tabs/tab4",
-        icon  : "home-outline"
-      },
-      {
-        title : "Mi Perfil Usuario",
-        url   : "/perfilusuario",
-        icon  : "man-outline"
-      }, 
-      {
-        title : "Perfil Adminitrador",
-        url   : "//perfiladmin",
-        icon  : "logo-reddit"
-      }, 
-     
-      
-    
 
-    ]
+  ngOnInit() {
+    this.verificarRol();
+  }
+
+  verificarRol() {
+    // Obtener el valor almacenado en Local Storage
+    const datosString = localStorage.getItem('datos');
+    if (datosString) {
+      const datos = JSON.parse(datosString);
+      console.log(datos);
+
+      // Verificar el rol y establecer el valor de esAdministrador
+      if (datos.rol === this.ROLES.ADMINISTRADOR) {
+        this.esAdministrador = true;
+      } else {
+        this.esAdministrador = false;
+      }
+    } else {
+      this.esAdministrador = false;
+    }
+
+    // Construir el menú lateral
+    this.sideMenu();
   }
 
 
-  
+  sideMenu() {
+    this.navigate = [];
+
+    if (this.esAdministrador) {
+      this.navigate.push({
+        title: "Perfil Administrador",
+        url: "/perfiladmin",
+        icon: "logo-reddit"
+      });
+    } else {
+      this.navigate.push({
+        title: "Inicio Usuario",
+        url: "/tabs/tabs/tab4",
+        icon: "home-outline"
+      }, {
+        title: "Mi Perfil Usuario",
+        url: "/perfilusuario",
+        icon: "man-outline"
+      });
+    }
+  }
+
+
+
+
+
   constructor(
     public alertController: AlertController,
     public navCtrl: NavController,
     //private storage:StorageService,
     private platform: Platform,
-    private splashScreen: SplashScreen,   
+    private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public popover: PopoverController
   ) {
-    this.sideMenu();
+    // this.sideMenu();
     this.initializeApp();
   }
 
@@ -65,36 +94,40 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  // ngOnInit() {
+  // //mira en el local store al ejecutar esta pantalla tabs
+  // //si no encuentra datos en store te redirigue a la pantalla principál.
+  // // if(this.storage.getCurrentUser()){
+  // //   window.location.href="/tabs";
+  // }
 
-    //mira en el local store al ejecutar esta pantalla tabs
-    //si no encuentra datos en store te redirigue a la pantalla principál.
-   // if(this.storage.getCurrentUser()){
-   //   window.location.href="/tabs";
-    }
 
-     async salir(){
-      const alert = await this.alertController.create({
-        cssClass: 'custom-alert',
-        header: 'Salir',
-        message: '¿Deberitas te quieres salir?',
-        buttons: [
-          {
-            text: 'No mejor no',
-            cssClass: 'custom-button adopt-button',
-            handler: () => {
-            }
-          }, {
-            text: 'Sii',
-            cssClass: 'custom-button salir-button',
-            handler: () => {
-              localStorage.clear();
-              this.navCtrl.navigateRoot('princi');
-            }
+
+
+
+
+  async salir() {
+    const alert = await this.alertController.create({
+      cssClass: 'custom-alert',
+      header: 'Salir',
+      message: '¿Deberitas te quieres salir?',
+      buttons: [
+        {
+          text: 'No mejor no',
+          cssClass: 'custom-button adopt-button',
+          handler: () => {
           }
-        ]
-      });
-  
-      await alert.present();
-    }
+        }, {
+          text: 'Sii',
+          cssClass: 'custom-button salir-button',
+          handler: () => {
+            localStorage.clear();
+            this.navCtrl.navigateRoot('princi');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 }

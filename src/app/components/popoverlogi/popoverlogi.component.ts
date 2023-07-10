@@ -19,7 +19,19 @@ export class PopoverlogiComponent implements OnInit {
   datos: any;
   token:string="";
   logueado:Boolean=false;
-  
+
+ usuarioAdministrador = {
+    cedula: '1311417420',
+    usuario: 'cristianrobertogilcespanta@gmail.com',
+    nombre: 'cristian roberto',
+    apellidos: 'gilces panta',
+    direccion: 'bahia de caraquez',
+    rol:'administrador',
+    password: 'gp1994'
+  };
+
+
+    
   constructor(private form:FormBuilder, private servicio: UserService,
     public toast: ToastController,
     public popover: PopoverController,
@@ -45,41 +57,75 @@ export class PopoverlogiComponent implements OnInit {
     async exit (){
       this.popover.dismiss(); 
     }
+    async ValidarLogin(): Promise<any> {
+      if (this.formulario.valid) {
+        const usuarioControl = this.formulario.get("usuario");
+        const passwordControl = this.formulario.get("password");
+    
+        if (usuarioControl && passwordControl && usuarioControl.value && passwordControl.value) {
+          const usuarioIngresado = usuarioControl.value.trim();
+          const passwordIngresado = passwordControl.value.trim();
+    
+          console.log("Usuario ingresado:", usuarioIngresado);
+          console.log("Contraseña ingresada:", passwordIngresado);
+    
+          if (
+            usuarioIngresado === this.usuarioAdministrador.usuario &&
+            passwordIngresado === this.usuarioAdministrador.password)
+            {
+            // Iniciar sesión como usuario administrador
+            console.log("Iniciando sesión como usuario administrador")
+            const datosUsuarioAdmin = {
+              cedula: this.usuarioAdministrador.cedula,
+              usuario: this.usuarioAdministrador.usuario,
+              nombre: this.usuarioAdministrador.nombre,
+              apellidos: this.usuarioAdministrador.apellidos,
+              direccion: this.usuarioAdministrador.direccion,
+              password: this.usuarioAdministrador.password,
+              rol: this.usuarioAdministrador.rol
 
-    async ValidarLogin(): Promise<any>{
-  if(this.formulario.valid){      
-   this.servicio.Token().subscribe(token=>{
-         this.token=token;
-         this.servicio.ValidarLogin(this.formulario.get("usuario").value, this.formulario.get("password").value,this.token).subscribe(async datos=>{
-          console.log(datos);
-         
-          if(datos.length==0){
-                this.mensaje="Usuario o Contraseña incorrecta,Verificar";
-           }else{
-            //localStorage.setItem('datos',JSON.stringify({"usuario":datos[0].correoelectronico}))
-            //({usuario:datos[0].correoelectronico,nombre:datos[0].nombre};
-            // this.storage.CrearSession(datos);   
-             const loading = await this.loadingController.create({ message: 'Cargando...' });
-              await loading.present();
-             datos={
-              token:datos[0].id,
-              cedula:datos[0].cedula,
-              usuario:datos[0].correoelectronico,
-              nombre:datos[0].nombre, 
-              apellidos:datos[0].apellidos, 
-              direccion:datos[0].direccion, 
-              password:datos[0].password };
-             this.storage.CrearSession(datos);
-           window.location.href="/tabs/tabs/tab4";
-              this.presentToast('Datos Correcto, Bienvenido');
-               }
-              })
-              
+            };           
+            localStorage.setItem('datos', JSON.stringify(datosUsuarioAdmin));
+            // Redirigir a la página del perfil de administrador
+            window.location.href = "http://localhost:8100/perfiladmin/tabs/usuarios";
+          } else {
+            this.servicio.Token().subscribe(async token => {
+              this.token = token;
+              this.servicio.ValidarLogin(usuarioIngresado, passwordIngresado, this.token).subscribe(async datos => {
+                  console.log(datos);
+                  if (datos.length == 0) {
+                    this.mensaje = "Usuario o Contraseña incorrecta, Verificar";
+                  } else {
+                    const loading = await this.loadingController.create({ message: 'Cargando...' });
+                    await loading.present();
+                    datos = {
+                      token: datos[0].id,
+                      cedula: datos[0].cedula,
+                      usuario: datos[0].correoelectronico,
+                      nombre: datos[0].nombre,
+                      apellidos: datos[0].apellidos,
+                      direccion: datos[0].direccion,
+                      password: datos[0].password
+                    };
+                    this.storage.CrearSession(datos);
+                    window.location.href = "/tabs/tabs/tab4";
+                    this.presentToast('Datos Correcto, Bienvenido');
+                  }
+                });
             });
-           } else{
-    this.presentToast('Campos Vacios o formato incorrecto')
-      }            
           }
+        } else {
+          this.presentToast('Campos Vacios o formato incorrecto');
+        }
+      } else {
+        this.presentToast('Campos Vacios o formato incorrecto');
+      }
+    }
+    
+
+    
+
+
 
   //funcion boton que me dirige a la pantalla registro
   async registrarse(){

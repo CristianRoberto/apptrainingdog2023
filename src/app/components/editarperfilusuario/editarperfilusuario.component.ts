@@ -4,9 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ToastController,LoadingController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import {UserService} from '../../servicios/user.service';
-
 import {
-
   FormBuilder
 } from '@angular/forms';
 import { AlertController, NavController } from '@ionic/angular';
@@ -35,15 +33,13 @@ export class EditarperfilusuarioComponent implements OnInit {
     public alertController: AlertController,
     private sanitizer: DomSanitizer,
     public navCtrl: NavController) {
-   
-  }
+     }
 
   ngOnInit() {
     this.user = window.localStorage.getItem('datos');
     this.user=(JSON.parse(this.user));
     this.user.token = this.user.token.toString().toUpperCase();
   }
-
 
   cargaArchivo2(event: any): any{
     this.archivoCargado = event.target.files[0];
@@ -109,9 +105,6 @@ async presentToast(message:any) {
   toast.present();
 }
 
-
-
-
   async exit (){
     this.popover.dismiss(); 
   }
@@ -119,7 +112,6 @@ async presentToast(message:any) {
  //editar o modificar Usuario
  //editar o modificar Usuario
  public imagenSeleccionada: any;
-
  onFileSelected(event: any): void {
    this.archivoCargado = event.target.files[0];
    this.archivos.push(this.archivoCargado);
@@ -127,9 +119,6 @@ async presentToast(message:any) {
      this.previsualizacion = imagen.base;
      console.log(imagen);
      })
-   
-
-
  }
  
  onUpdateUsuario( cedula: any, correoelectronico: any, nombre: any, apellidos: any, direccion: any, telefono: any, password: any, foto: any): void {
@@ -189,7 +178,5 @@ async presentToast(message:any) {
   this.elementos.telefono = "";
   this.elementos.password = "";
   this.elementos.foto = "";
-
 }
-
 }
