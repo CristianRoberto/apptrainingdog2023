@@ -6,11 +6,11 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
-import {PopoverlogiComponent} from './popoverlogi/popoverlogi.component';
-import {PopoverregistroComponent} from './popoverregistro/popoverregistro.component';
+import { PopoverlogiComponent } from './popoverlogi/popoverlogi.component';
+import { PopoverregistroComponent } from './popoverregistro/popoverregistro.component';
 //import { IngresomascotaComponent } from './ingresomascota/ingresomascota.component';
 import { EditarperfilusuarioComponent } from './editarperfilusuario/editarperfilusuario.component';
-import {  RegistroadopcionComponent } from './registroadopcion/registroadopcion.component';
+import { RegistroadopcionComponent } from './registroadopcion/registroadopcion.component';
 
 
 
@@ -29,7 +29,7 @@ import {  RegistroadopcionComponent } from './registroadopcion/registroadopcion.
     RouterModule,
     ReactiveFormsModule,
   ],
-  exports:[
+  exports: [
     PopoverlogiComponent,
     PopoverregistroComponent,
     EditarperfilusuarioComponent,

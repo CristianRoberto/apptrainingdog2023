@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ToastController,LoadingController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import {UserService} from '../servicios/user.service';
 import { PopoverController } from '@ionic/angular';
 import { DomSanitizer } from '@angular/platform-browser';
+import { IonContent } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-adopciones',
@@ -11,6 +13,9 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./adopciones.page.scss'],
 })
 export class AdopcionesPage implements OnInit {
+
+  @ViewChild(IonContent) content: IonContent | any;
+
   public previsualizacion!: string;
   public archivos: any = []
   products:any=[];
@@ -204,5 +209,9 @@ export class AdopcionesPage implements OnInit {
     this.elementos.fecharetiro = "";
     this.elementos.password = "";
   }
+  scrollToBottom() {
+    this.content.scrollToBottom(300); // El número 300 representa la duración de la animación en milisegundos.
+  }
+
 
 }

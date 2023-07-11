@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonContent } from '@ionic/angular';
 import { ToastController,LoadingController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import {UserService} from '../servicios/user.service';
 import { PopoverController } from '@ionic/angular';
 import { DomSanitizer } from '@angular/platform-browser';
+
 
 
 @Component({
@@ -12,6 +14,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./mascotas.page.scss'],
 })
 export class MascotasPage implements OnInit {
+  @ViewChild(IonContent) content: IonContent | any;
+
   public previsualizacion!: string;
   public archivos: any = []
   products:any=[];
@@ -45,6 +49,10 @@ export class MascotasPage implements OnInit {
   onInput2(){
     this.elementos.bus='';
     this.products=this.auxproducts;
+  }
+
+  scrollToBottom() {
+    this.content.scrollToBottom(300); // El número 300 representa la duración de la animación en milisegundos.
   }
 
   onInput(even:any){

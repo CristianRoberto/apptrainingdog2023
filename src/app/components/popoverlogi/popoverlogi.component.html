@@ -1,62 +1,71 @@
-<ion-header >
-  <ion-toolbar color="primary"style="height: 60px; ">
-    <ion-card-header >
-      <ion-card-title style="text-align: center;  font-family: Georgia, 'Times New Roman', Times, serif; margin-top: 0px;">LOGIN</ion-card-title>
+<ion-header>
+  <ion-toolbar color="primary" style="height: 60px; ">
+    <ion-card-header>
+      <ion-card-title
+        style="text-align: center;  font-family: Georgia, 'Times New Roman', Times, serif; margin-top: 0px;">LOGIN</ion-card-title>
     </ion-card-header>
-    <ion-buttons slot="end" color="danger" (click)="exit()" style="margin-left: 2px;" >
-      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+    <ion-buttons slot="end" color="danger" (click)="exit()" style="margin-left: 2px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-x-circle"
+        viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+        <path
+          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
       </svg>
-    </ion-buttons> 
+    </ion-buttons>
 
-      <ion-back-button></ion-back-button>
+    <ion-back-button></ion-back-button>
 
   </ion-toolbar>
-  
-    
+
+
 </ion-header>
-<ion-content color="danger"  >
-    <div id="formContent">
-      <!-- Tabs Titles -->
-      <!-- Icon -->
-      <div class="fadeIn first">
-        <img src="assets/icon/dog.png" alt="">
-        <img src="assets/icon/logi.png" id="icon" alt="User Icon"  height="120px">
-      </div>
-      <h1 class="h1">Ingresar Datos<br> Login</h1>
-           <!-- Login Form formulario login -->
-      <div *ngIf="mensaje!==''" class="alert alert-success">{{mensaje}}</div>
-      <form [formGroup]="formulario" (ngSubmit)="ValidarLogin()" *ngIf="!logueado">
-        <div class="body">
-          <ion-list>
-            <ion-item  color="medium">
-              <ion-icon slot="start" name="at"></ion-icon>
-              <ion-input type='email' formControlName="usuario" placeholder="Usuario" class="fadeIn second" required></ion-input>
-            </ion-item>
-            <ion-item color="medium">
-             <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
-             <ion-input type='password' formControlName="password" placeholder="Password" class="fadeIn second" required></ion-input>
-            </ion-item>
-          </ion-list>
-</div>
-<div>
-  <ion-button color="danger"  class="recuperarClave"   (click)="recuperarClave()"  style="border: rgb(255, 255, 255) 3px solid; border-radius: 100px;"    class="botones-stilos">Recuperar Clave</ion-button>
-</div>
-           <button class="botoniniciar" type="submit"  >Iniciar Sessión</button>
-      </form>    
+<ion-content color="danger">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="assets/icon/dog.png" alt="">
+      <img src="assets/icon/logi.png" id="icon" alt="User Icon" height="120px">
     </div>
-<br>
+    <h1 class="h1">Ingresar Datos<br> Login</h1>
+    <!-- Login Form formulario login -->
+    <div *ngIf="mensaje!==''" class="alert alert-success">{{mensaje}}</div>
+    <form [formGroup]="formulario" (ngSubmit)="ValidarLogin()" *ngIf="!logueado">
+      <div class="body">
+        <ion-list>
+          <ion-item color="medium">
+            <ion-icon slot="start" name="at"></ion-icon>
+            <ion-input type='email' formControlName="usuario" placeholder="Usuario" class="fadeIn second"
+              required></ion-input>
+          </ion-item>
+          <ion-item color="medium">
+            <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+            <ion-input type='password' formControlName="password" placeholder="Password" class="fadeIn second"
+              required></ion-input>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div>
+        <ion-button color="danger" class="recuperarClave" (click)="recuperarClave()"
+          style="border: rgb(255, 255, 255) 3px solid; border-radius: 100px;" class="botones-stilos">Recuperar
+          Clave</ion-button>
+      </div>
+      <button class="botoniniciar" type="submit">Iniciar Sessión</button>
+    </form>
+  </div>
+  <br>
 </ion-content>
 <ion-footer>
-  <ion-toolbar color="dark"  class="underlineHover" (click)="registrarse()">
+  <ion-toolbar color="dark" class="underlineHover" (click)="registrarse()">
     <ion-buttons slot="end">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle"
+        viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+        <path
+          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
       </svg>
       <ion-button>Registrarse?
       </ion-button>
-      </ion-buttons>
+    </ion-buttons>
   </ion-toolbar>
 </ion-footer>

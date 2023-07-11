@@ -198,7 +198,9 @@
 		   </ion-item>
 				</ion-col>
   
-	
+				<ion-fab-button (click)="scrollToBottom()" class="float">
+					<ion-icon name="arrow-down"></ion-icon>
+				  </ion-fab-button>
 	  
 				 <ion-col size="8" style="padding: 0; " >
 				  <ion-searchbar       (ionInput)="onInput($event)"  placeholder="Buscar" [(ngModel)]="elementos.bus" style=" background: white;" ></ion-searchbar>
@@ -265,10 +267,20 @@
 		<ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
 		  <ion-refresher-content></ion-refresher-content>
 		</ion-refresher>
-	  <ion-grid>
+
+		<div>
+			<h1 style="text-align: center; font-family: Georgia, 'Times New Roman', Times, serif;color: rgb(0, 0, 0); font-size: 20px;">Mascotas Adoptadas Actualmente</h1>
+
+		</div>
+
+
+		<ion-grid>	
 		<ion-row  class="row1" >
 			<ion-col class="col1" size-lg="3" size-md="4"   size-sm="4" size-xs="6"  *ngFor="let pro of products; "  >
-			<ion-card     style="margin: 0px;height: 100%; border: aqua 2px solid;">
+	
+				
+				
+				<ion-card     style="margin: 0px;height: 100%; border: aqua 2px solid;">
 					<div >
 					<h1 style="text-align: center; font-family: Georgia, 'Times New Roman', Times, serif;color: rgb(0, 0, 0); font-size: 18px;">Adopcion #{{pro.idadopcion}}</h1>
 					<ion-img   src="{{pro.foto}}" style="height: 70px; width: 100%;"> </ion-img>

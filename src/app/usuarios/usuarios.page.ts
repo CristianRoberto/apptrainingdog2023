@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonContent } from '@ionic/angular';
 import { ToastController,LoadingController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import {UserService} from '../servicios/user.service';
@@ -11,6 +12,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./usuarios.page.scss'],
 })
 export class UsuariosPage implements OnInit {
+
+  @ViewChild(IonContent) content: IonContent | any;
   public previsualizacion!: string;
   public archivos: any = []
   products:any=[];
@@ -95,6 +98,16 @@ export class UsuariosPage implements OnInit {
 
 
   }
+
+
+
+  scrollToBottom() {
+    this.content.scrollToBottom(300); // El número 300 representa la duración de la animación en milisegundos.
+  }
+
+
+
+
   cargaArchivo2(event: any): void{
     this.archivoCargado = event.target.files[0];
 this.archivos.push(this.archivoCargado);

@@ -12,7 +12,6 @@
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #005eff;
   --ion-color-primary-tint: #005eff;
-
   --ion-color-secondary: #0000ff;
   --ion-color-secondary-rgb: 61, 194, 255;
   --ion-color-secondary-contrast: #ffffff;
@@ -788,17 +787,15 @@ footer {
 }
 
 .float {
-  width: 80%;
-  height: 100px;
+  position: fixed;
   bottom: 40px;
   right: 40px;
+  width: 50px;
+  height: 50px;
   background-color: #25d366;
   color: #FFF;
-  border-radius: 10px;
+  border-radius: 50%;
   text-align: center;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
   font-size: 30px;
   box-shadow: 2px 2px 3px #999;
   z-index: 1000;

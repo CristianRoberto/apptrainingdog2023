@@ -34,7 +34,8 @@
           <ion-input type="text"
             style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
             placeholder={{mascota.mascota}} required name="idmascota" [(ngModel)]="elementos.idmascota"
-            class="form-control"></ion-input>
+            class="form-control">          
+          </ion-input>
         </ion-item>
 
         <ion-label position="floating">Cédula ID</ion-label>
@@ -63,13 +64,13 @@
 
         <ion-label position="floating">Fecha de Retiro</ion-label>
         <div style="position: relative;">
-          <ion-item color="dark">
-            <div style="display: flex; flex-direction: column; align-items: center;">
-              <ion-input (click)="showCalendar = true"
-                style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; width: 100%;"
-                placeholder="yyyy-MM-dd" required name="fecharetiro" [(ngModel)]="elementos.fecharetiro"
-                class="form-control">
-              </ion-input>
+          <ion-item color="dark" >
+            <div style="display: flex; flex-direction: column; align-items: center; ">
+              <ion-input (click)="showCalendar = true" style="text-align: center;"
+    placeholder="yyyy-MM-dd" required name="fecharetiro" [(ngModel)]="elementos.fecharetiro"
+    class="form-control">
+</ion-input>
+
               <ion-datetime *ngIf="showCalendar" display-format="yyyy-MM-dd" picker-format="yyyy-MM-dd"
                 style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; width: 80%;border: aqua 3px solid;background: rgba(0, 255, 255, 0.171);"
                 (ionChange)="onDateSelect($event); showCalendar = false" interface="popover">
