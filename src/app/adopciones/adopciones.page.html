@@ -1,4 +1,5 @@
-<ion-header>			
+
+  <ion-header>			
 	<ion-toolbar color="dark">
 		<ion-buttons slot="start" >
 			<ion-menu-button class="botonmenu" style="font-family: Georgia, 'Times New Roman', Times, serif;"></ion-menu-button>
@@ -271,48 +272,66 @@
 		<div>
 			<h1 style="text-align: center; font-family: Georgia, 'Times New Roman', Times, serif;color: rgb(0, 0, 0); font-size: 20px;">Mascotas Adoptadas Actualmente</h1>
 
-		</div>
-
-
-		<ion-grid>	
-		<ion-row  class="row1" >
-			<ion-col class="col1" size-lg="3" size-md="4"   size-sm="4" size-xs="6"  *ngFor="let pro of products; "  >
-	
-				
-				
-				<ion-card     style="margin: 0px;height: 100%; border: aqua 2px solid;">
-					<div >
-					<h1 style="text-align: center; font-family: Georgia, 'Times New Roman', Times, serif;color: rgb(0, 0, 0); font-size: 18px;">Adopcion #{{pro.idadopcion}}</h1>
-					<ion-img   src="{{pro.foto}}" style="height: 70px; width: 100%;"> </ion-img>
-					<div class="chip" > 
-					  <ion-chip  style="  color: black; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
-						<ion-label>IdMascota: # {{pro.idmascota}}</ion-label>
-						 </ion-chip >
-					</div>   <br><br>
-					<div style="height: 100%; text-align: center; font-size: 17px; "> 
-					<ion-card-header style="color: black;">  
-					Cedula:
-					<br>{{pro.idcedula}}
-				 	F.Retiro: {{pro.fecharetiro}}<br>Estado: {{pro.sexo}}
-					</ion-card-header>       
-					
-				</div>   
-				<br>
-				<ion-chip class="button-total text-center" style="display: flex; justify-content: center; align-items: center;background: aqua;" >
-					<ion-label class="label" value="Seleccionar" (click)="onSetData(pro)" style="text-align: center; width: 100%; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-					  Seleccionar
-					</ion-label>
-				  </ion-chip>
-
-				</div>
-			</ion-card>       
-		  </ion-col>   
-		</ion-row>
-	  </ion-grid>
-					<br>
-        		<ion-img src="/assets/icon/autor.png"></ion-img>
-        		<br> 
+		</div> 
   </div>
   
+  <ion-grid class="ion-text-center">
+	<ion-row class="header-row" style="background-color: #333; color: white;">
+	  <ion-col>
+		<ion-text>Foto<br>Mascota</ion-text>
+	  </ion-col>
+	  <ion-col>
+		<ion-text>Fecha<br>Retiro</ion-text>
+	  </ion-col>
+	  <ion-col>
+		<ion-text>#Mascota</ion-text>
+	  </ion-col>
+	  <ion-col>
+		<ion-text>Estado</ion-text>
+	  </ion-col>
+	  <ion-col>
+		<ion-text>Accion</ion-text>
+	  </ion-col>
+	</ion-row>
+	 <ion-row *ngFor="let item of products;" class="data-row" [class.selected]="item === selectedRow">
+
+		<ion-col size="2" class="centered-avatar-col">
+		  <ion-avatar class="centered-avatar">
+			<div class="avatar-image-container">
+			  <img src="{{ item.foto }}" class="centered-image">
+			</div>
+		  </ion-avatar>
+		</ion-col>
+		<ion-col size="2" class="center-text">
+		  <ion-text>{{ item.fecharetiro }}</ion-text>
+		</ion-col>
+		<ion-col size="2" class="center-text">
+		  <ion-text>{{ item.idmascota }}</ion-text>
+		</ion-col>
+		<ion-col size="3" class="center-text">
+		  <ion-text>{{ item.estadoAdopcion === 'Retirado' ? 'Retirado' : 'Retirado' }}</ion-text>
+		  <ion-checkbox (ionChange)="cambiarEstadoAdopcion(item)" [(ngModel)]="item.estadoAdopcion"></ion-checkbox>
+		</ion-col>
+		<ion-col size="3" class="center-button">
+			<ion-chip class="button-total" color="primary" (click)="onSetData(item, $event)">
+
+			<ion-label>Actualizar</ion-label>
+		  </ion-chip>
+		</ion-col>
+	  </ion-row>
+	  
+	<br> 
+	<br> 
+	<br> 
+
+	<ion-row class="logo-row">
+	  <ion-col>
+		<img class="fotologo" src="assets/icon/dog.png">
+	  </ion-col>
+	</ion-row>
+	<ion-img src="/assets/icon/autor.png"></ion-img>
+	<br> 
+  </ion-grid>
+
   
   </ion-content>

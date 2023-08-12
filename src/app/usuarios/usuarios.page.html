@@ -270,44 +270,40 @@
 
 	<h1 style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Lista Usuarios</h1>
   <div class="card-body" style="border: #d7d8da 1px solid;">
-  <table class="elegant-table">
-	<thead>
-	  <tr>
-		<th>Foto</th>
-		<th>Id</th>
-
-		<th>Cedula</th>
-		<th>Nombre</th>
-		<th>Seleccionar</th>
-  
-	  </tr>
-	</thead>
-	<tbody>
-
-		<ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+ 
+	<table class="elegant-table">
+		<thead>
+		  <tr class="header-row">
+			<th>Foto</th>
+			<th>Id</th>
+			<th>Cédula</th>
+			<th>Nombre</th>
+			<th>Seleccionar</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
 			<ion-refresher-content></ion-refresher-content>
 		  </ion-refresher>
-		
+		  <tr *ngFor="let row of products;" class="data-row" [class.selected]="row === selectedRow">
+			<td class="centered-cell">
+				<div class="centered-avatar">
+				  <img src="{{ row.foto }}">
+				</div>
+			  </td>
+			  
+			<td>{{ row.id }}.</td>
+			<td>{{ row.cedula }}</td>
+			<td>{{ row.nombre }}</td>
+			<td class="center-button">
+			  <ion-chip class="button-total" color="primary" (click)="onSetData(row, $event)">
+				<ion-label>Seleccionar</ion-label>
+			  </ion-chip>
+			</td>
+		  </tr>
+		</tbody>
+	  </table>
 	  
-	  <tr  *ngFor="let row of products; " >
-  
-		<ion-avatar class="avatar" slot="start">
-		  <img src="{{row.foto}}"  >
-		</ion-avatar>
-		<td>{{ row.id }}</td>
-		<td>{{ row.cedula }}</td>
-		<td>{{ row.nombre }}</td>
-  
-		<ion-chip class="chip"  >
-		  <ion-label class="label"value="Seleccionar" (click)="onSetData(row)" style="text-align: center;width: 100%; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; " >Selecionar</ion-label>  
-		  </ion-chip>
-	  </tr>
-  
-	
-  
-  
-	</tbody>
-  </table>
   
   </div>
   </div>

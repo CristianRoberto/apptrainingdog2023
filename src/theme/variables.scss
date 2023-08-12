@@ -610,11 +610,95 @@ footer {
       font-size: 30px;
     }
 
-    .copyright {
-      font-size: 20px;
-    }
+  
   }
 }
+
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+.form-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.button-total:hover {
+  background-color: #01393d; /* Color de fondo al pasar el cursor */
+  box-shadow: 0px 15px 20px rgba(255, 255, 255, 0.3);
+  transform: translateY(-7px);
+  color: rgb(255, 255, 255);
+}
+
+.data-row {
+  background-color: #f4f4f4;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.centered-avatar-col,
+.center-text,
+.center-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-avatar {
+   width: 65px;
+    height: 65px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.centered-image {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.button-total {
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button-total:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
 
 .equipotrabajo {
   border-radius: 1px;
@@ -631,7 +715,6 @@ footer {
 
 .copyright {
   color: #c7c7c7;
-  font-size: 30px;
 }
 
 .container-footer {
@@ -641,7 +724,6 @@ footer {
 .copyright {
   color: #C7C7C7;
   font-family: 'Times New Roman', Times, serif;
-  font-size: 30px;
   text-align: center;
 }
 

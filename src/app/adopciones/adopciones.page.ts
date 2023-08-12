@@ -25,16 +25,9 @@ export class AdopcionesPage implements OnInit {
    
     tipob: "",
     bus:''
-
      };
-
-
-
-    
-
-
-
-  public archivoCargado:any;
+  selectedRow: any = null;
+     public archivoCargado:any;
      public totalArchivoCargado = 0;
      public tamanioArchivoCargado = 0;
   constructor(public popover: PopoverController,
@@ -44,6 +37,19 @@ export class AdopcionesPage implements OnInit {
 
     public loadingController: LoadingController,
     ) {}
+
+
+    cambiarEstadoAdopcion(item: { estadoAdopcion: string; }) {
+      // Cambiar el estado de 'No Retirado' a 'Retirado' o viceversa
+      item.estadoAdopcion = item.estadoAdopcion === 'Retirado' ? 'No Retirado' : 'Retirado';
+    
+      // Llamar a la función para actualizar el estado en la base de datos u otra lógica necesaria
+      // this.actualizarEstadoEnBaseDeDatos(item); // Reemplaza esto con la función adecuada
+    }
+    
+
+
+
   ngOnInit() {
     this.search();
 
@@ -186,16 +192,23 @@ export class AdopcionesPage implements OnInit {
       }
       
 
-  onSetData(select:any){
-    this.elementos.idadopcion = select.idadopcion;
-    this.elementos.idcedula = select.idcedula;
-    this.elementos.idmascota = select.idmascota;
+      onSetData(select: any, event: Event) {
+        event.stopPropagation(); // Evita que el evento se propague a la fila
+        this.selectedRow = select;
 
-    this.elementos.nombreusuario = select.nombreusuario;
-    this.elementos.apellidousuario = select.apellidousuario;
+        this.elementos.idadopcion = select.idadopcion;
 
-    this.elementos.fecharetiro = select.fecharetiro;
-    this.elementos.password = select.password;
+        this.elementos.idcedula = select.idcedula;
+
+        this.elementos.idmascota = select.idmascota;
+
+        this.elementos.nombreusuario = select.nombreusuario;
+
+        this.elementos.apellidousuario = select.apellidousuario;
+
+        this.elementos.fecharetiro = select.fecharetiro;
+
+        this.elementos.password = select.password;
   }
 
   clear(){

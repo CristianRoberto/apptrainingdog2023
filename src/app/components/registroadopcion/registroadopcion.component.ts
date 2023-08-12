@@ -126,6 +126,10 @@ export class RegistroadopcionComponent implements OnInit {
               producForm.value.foto = this.fotoMascota;
             }
 
+            if (!producForm.value.estadoadopcion) {
+              producForm.value.estadoadopcion = 'No Retirado';
+            }
+
             // Mostrar alerta de confirmación antes de guardar
             const alert = await this.alertController.create({
               header: 'Aceptar Términos y Condiciones',

@@ -27,11 +27,8 @@ export class MascotasPage implements OnInit {
     bus:''
 
      };
-
-
+     selectedRow: any = null;
      productForm: any
-
-
   public archivoCargado:any;
      public totalArchivoCargado = 0;
      public tamanioArchivoCargado = 0;
@@ -252,8 +249,10 @@ clearImage(): any {
         }
       }
       
+      onSetData(select: any, event: Event) {
+        event.stopPropagation(); // Evita que el evento se propague a la fila
+        this.selectedRow = select;
 
-  onSetData(select:any){
     this.elementos.id = select.id;
     this.elementos.cedula = select.cedula;
     this.elementos.nombreraza = select.nombreraza;

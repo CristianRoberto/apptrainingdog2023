@@ -1,6 +1,39 @@
-  
-  .elegant-table th,
-  .elegant-table td {
-    padding: 15px 5px;
-  }
-  
+
+
+.header-row {
+  background-color: #e7f0f2;
+  font-weight: bold;
+}
+
+.data-row.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.button-total {
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button-total:hover {
+  background-color: #0056b3;
+}
+
+.centered-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+

@@ -58,6 +58,7 @@ export class PerfilusuarioPage implements OnInit {
       this.products = [];
       this.auxproducts = [];
       this.products = re;
+      console.log(this.products)
       this.auxproducts = this.products;
       await loading.dismiss();
       if (this.products.length === 0) {

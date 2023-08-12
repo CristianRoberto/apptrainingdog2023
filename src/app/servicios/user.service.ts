@@ -64,18 +64,9 @@ export class UserService {
     return this.http.delete(`${this.url}`+ `/users`+ `/${id}`,
     {headers:{"Content-Type":"application/json"}}).toPromise()
   }
-
   updateUsuario(id: any, camposActualizados: FormData): Observable<any> {
     return this.http.put<any>(`${this.url}/users/${id}`, camposActualizados);
   }
-
-  
-
-
-
-
-
-
 
 
     //servicio Mascotas//registrar  nuevo mascota
@@ -94,29 +85,18 @@ export class UserService {
       {headers:{"Content-Type":"application/json"}}).toPromise()
     }
    
-  
-
-
-
-
-    //servicio Mascotas//registrar  nuevo mascota
-
+   //servicio Adopcion
     getAdopciones(){
       return this.http.get(`${this.url}`+ `/adopciones`,
     {headers:{"Content-Type":"application/json"}}).toPromise()
       }
-
       getAdopcionesById({ idcedula }: { idcedula: any; }): Promise<Object | any> {
         return this.http.get(`${this.url}`+ `/adopciones/${idcedula}`,
         {headers:{"Content-Type":"application/json"}}).toPromise()
       }
-
-   
-
       postAdopciones(foto: string, formulario: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
         const url = `${this.url}/adopciones`;
-      
         // Agregar la imagen al formulario si no es null
         if (foto) {
           formulario.foto = foto;
@@ -124,11 +104,7 @@ export class UserService {
       
         return this.http.post(url, JSON.stringify(formulario), { headers }).toPromise();
       }
-      
-
-
-
-
+    
       deleteAdopciones(idadopcion:any){
         return this.http.delete(`${this.url}`+ `/adopciones` + `/${idadopcion}`,
         {headers:{"Content-Type":"application/json"}}).toPromise()
@@ -154,12 +130,5 @@ export class UserService {
         return this.http.delete(`${this.url}`+ `/adiestramientos` + `/${id}`,
         {headers:{"Content-Type":"application/json"}}).toPromise()
       }
-
-
-
-        
- 
-
-
 
 }

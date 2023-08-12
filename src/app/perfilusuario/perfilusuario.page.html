@@ -220,10 +220,13 @@
 				<ion-text>Foto<br>Mascota</ion-text>
 			</ion-col>
 			<ion-col>
-				<ion-text>FechaRetiro</ion-text>
+				<ion-text>Fecha<br>Retiro</ion-text>
 			</ion-col>
 			<ion-col>
 				<ion-text>#Mascota</ion-text>
+			</ion-col>
+			<ion-col>
+				<ion-text>Estado</ion-text>
 			</ion-col>
 		</ion-row>
 		<ion-row *ngFor="let item of  products;">
@@ -240,6 +243,13 @@
 					{{item.idmascota}}
 				</ion-text>
 			</ion-col>
+			<ion-col>
+				<ion-text>
+					 {{item.estadoadopcion}}
+				
+				</ion-text>
+			</ion-col>
+
 		</ion-row>
 		<br><br><br>
 		<div><br>

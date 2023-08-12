@@ -25,6 +25,9 @@ export class UsuariosPage implements OnInit {
     bus:''
   };
 
+  selectedRow: any = null;
+
+
 
 
 
@@ -298,7 +301,11 @@ clearImage(): any {
       }
       
 
-  onSetData(select:any){
+ 
+      onSetData(select: any, event: Event) {
+        event.stopPropagation(); // Evita que el evento se propague a la fila
+        this.selectedRow = select;
+
     this.elementos.id = select.id;
     this.elementos.cedula = select.cedula;
     this.elementos.correoelectronico = select.correoelectronico;
