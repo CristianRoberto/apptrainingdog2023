@@ -183,26 +183,28 @@
 			  </ion-card-content>
 			</ion-card>
 		    </div>
-		  <div class="caracteristica"  *ngFor="let character of chracter" style="line-height : 0px;">
-		  <br>
-		  <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Caracteristicas</h1>
-		  
-		 <div style="font-family: Georgia, 'Times New Roman', Times, serif; margin-top: 0px;  line-height : 0px;">
-		  <h2 >  Numero Mascota#: {{character.id}}<br>      </h2>
-		  <h3 >  Nombre:  {{character.nombreraza}}<br>      </h3>
-		  <h3     >  Color: {{character.color}}<br>      </h3>
-		  <h3    >  Edad: {{character.edad}}<br>      </h3>
-		  <h3>  Estatura: {{character.estatura}}<br>      </h3>
-
-		  <h3>  Sexo: {{character.sexo}}<br>      </h3>
 
 
-		  <h3>  Descripcion:  {{character.descripcion}}<br>      </h3>
-		  </div>
-		  </div>
+
+			<div class="caracteristica" *ngFor="let character of chracter" style="line-height: 0;">
+				<br>
+				<h1 class="title">Características Mascota</h1>
+			  
+				<div class="character-info">
+				  <h2 class="subtitle">Número Mascota#: {{character.id}}</h2>
+				  <h3>Nombre: {{character.nombreraza}}</h3>
+				  <h3>Color: {{character.color}}</h3>
+				  <h3>Edad: {{character.edad}}</h3>
+				  <h3>Estatura: {{character.estatura}}</h3>
+				  <h3>Sexo: {{character.sexo}}</h3>
+				  <h3>Descripción: {{character.descripcion}}</h3>
+				</div>
+			  </div>
+			  
+
 	</ion-col>
-		  <button class="adoptar" (click)="componenteadoptar()"><br>Realizar adopcion<br><br></button><br>
-		  <footer>
+	<button class="adoptar" (click)="componenteadoptar()"><br>Realizar adopcion<br><br></button><br>
+	 <footer>
 
 	<div class="card-body" style="border: aqua 0.5px solid; text-align: center;">
 		<h2 > CONTACTANOS<BR>Y<BR>SIGUENOS </h2>

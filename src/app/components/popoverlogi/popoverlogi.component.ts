@@ -14,7 +14,7 @@ import { AlertController, NavController } from '@ionic/angular';
   styleUrls: ['./popoverlogi.component.scss'],
 })
 export class PopoverlogiComponent implements OnInit {
-  formulario: any = FormGroup<any>;
+  formulario: any = FormGroup;
   mensaje: string = "";
   datos: any;
   token: string = "";

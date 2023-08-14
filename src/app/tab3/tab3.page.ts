@@ -24,21 +24,33 @@ export class Tab3Page  implements OnInit {
     public loadingController: LoadingController,
     ) {}
   
-  ngOnInit(): void {
-  }
-  ionViewDidEnter(){
-    this.search();
-  }
- 
-  handleRefresh(event:any) {
-    this.search();
-    setTimeout(() => {
-      // Any calls to load data go here
-      event.target.complete();
-    }, 2000);
-  };
+
+    ngOnInit(): void {
+    }
+    
+    ionViewDidEnter() {
+      this.search();
+        }
+
+  // Variable para controlar el estado de la actualización
+  isRefreshing: boolean = false; 
+  handleRefresh(event: any ): void {
+  if (this.isRefreshing) {
+  return;
+}
+this.isRefreshing = true; // Marca la actualización como en curso
+ this.search(); // Realiza la búsqueda de datos
+// // Simula una carga de datos con un retardo de 2 segundos
+setTimeout(() => {
+this.isRefreshing = false; // Marca la actualización como completada
+// // Realiza cualquier otra acción necesaria
+// // Reinicia la variable isRefreshing para futuras actualizaciones
+this.isRefreshing = false;
+}, 2000);
+}
 
   async search(): Promise<void>{
+    this.handleRefresh(event);
     const loading = await this.loadingController.create({ message: 'Cargando...' });
       await loading.present();
     this.servicio.getMascotas().then ( async (re:any)=>{

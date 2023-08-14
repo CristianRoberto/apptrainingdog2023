@@ -7,6 +7,7 @@ import { AlertController } from '@ionic/angular';
 import { UserService } from '../servicios/user.service';
 import { ToastController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 
 @Component({
@@ -49,8 +50,6 @@ export class PerfilusuarioPage implements OnInit {
       event.target.complete();
     }, 2000);
   };
-
-
   async search(): Promise<void> {
     const loading = await this.loadingController.create({ message: 'Cargando...' });
     await loading.present();

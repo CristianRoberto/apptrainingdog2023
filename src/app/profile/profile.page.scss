@@ -4,15 +4,36 @@
     color: rgb(0, 0, 0);
     font-size: 50px;
   }
-  .caracteristica{
-    text-align: center;
-    border:0px solid  rgb(0, 0, 0);
-    font-size: 20px;
-  }
-  .caracteristica1{
+ 
 
-    margin-top: -15px;
-    }
-    .caracteristica h1{
-      margin-top: -1px;
-    }
+  .caracteristica {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    text-align: center;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px 9px rgb(255, 255, 255);
+
+    margin: 20px auto;
+    max-width: 80%;
+  }
+  
+  .title {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .character-info h3{
+    font-size: 16px;
+    color: #272727;
+    margin-bottom: 8px;
+  }
+  
+

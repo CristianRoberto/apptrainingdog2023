@@ -6,6 +6,7 @@ import { PopoverController } from '@ionic/angular';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IonContent } from '@ionic/angular';
 
+import { AlertController, NavController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-adopciones',
@@ -13,7 +14,7 @@ import { IonContent } from '@ionic/angular';
   styleUrls: ['./adopciones.page.scss'],
 })
 export class AdopcionesPage implements OnInit {
-
+  
   @ViewChild(IonContent) content: IonContent | any;
 
   public previsualizacion!: string;
@@ -26,11 +27,29 @@ export class AdopcionesPage implements OnInit {
     tipob: "",
     bus:''
      };
+
   selectedRow: any = null;
+
+  selectRow(select:any, event: Event,item: any) {
+    event.stopPropagation(); // Evita que el evento se propague a la fila
+ this.selectedRow = select;
+       this.elementos.idadopcion = select.idadopcion;
+       this.elementos.idcedula = select.idcedula;
+       this.elementos.idmascota = select.idmascota;
+       this.elementos.nombreusuario = select.nombreusuario;
+       this.elementos.apellidousuario = select.apellidousuario;
+       this.elementos.fecharetiro = select.fecharetiro;
+       this.elementos.password = select.password;
+    this.selectedRow = item;
+  }
      public archivoCargado:any;
      public totalArchivoCargado = 0;
      public tamanioArchivoCargado = 0;
-  constructor(public popover: PopoverController,
+
+
+  constructor(
+    public alertController: AlertController,
+    public popover: PopoverController,
     public toast: ToastController,
     private servicio: UserService,
     private sanitizer: DomSanitizer,
@@ -39,17 +58,7 @@ export class AdopcionesPage implements OnInit {
     ) {}
 
 
-    cambiarEstadoAdopcion(item: { estadoAdopcion: string; }) {
-      // Cambiar el estado de 'No Retirado' a 'Retirado' o viceversa
-      item.estadoAdopcion = item.estadoAdopcion === 'Retirado' ? 'No Retirado' : 'Retirado';
-    
-      // Llamar a la función para actualizar el estado en la base de datos u otra lógica necesaria
-      // this.actualizarEstadoEnBaseDeDatos(item); // Reemplaza esto con la función adecuada
-    }
-    
-
-
-
+ 
   ngOnInit() {
     this.search();
 
@@ -73,32 +82,33 @@ export class AdopcionesPage implements OnInit {
             return(item.fecharetiro.toString().toLowerCase().indexOf(val.toLowerCase()) >-1)
 
           }
-          //return(item.precio.toLowerCase().indexOf(val.toLowerCase()) >-1)
-        })
-  
+        })  
       }else{
       this.products=this.auxproducts;
       }
     }else{
      this.presentToast('Seleccione un criterio de busqueda');
     }
-    
-
   }
 
 
-  handleRefresh(event:any) {
-    this.search();
-    setTimeout(() => {
-      // Any calls to load data go here
-      event.target.complete();
-    }, 2000);
-  };
+  isRefreshing: boolean = false; // Variable para controlar el estado de la actualización
 
+handleRefresh(event: any): void {
+  if (this.isRefreshing) {
+    return; // Evita iniciar una nueva actualización mientras una ya está en curso
+  }
+  this.isRefreshing = true; // Marca la actualización como en curso
+  this.search(); // Realiza la búsqueda de datos
+  // Simula una carga de datos con un retardo de 2 segundos
+  setTimeout(() => {
+    this.isRefreshing = false; // Marca la actualización como completada
+    // Realiza cualquier otra acción necesaria
 
-
-
-
+    // Reinicia la variable isRefreshing para futuras actualizaciones
+    this.isRefreshing = false;
+  }, 2000);
+}  
 
 
   async search(): Promise<void>{
@@ -119,8 +129,6 @@ export class AdopcionesPage implements OnInit {
  
   async exit (){
     this.popover.dismiss(); 
-
-
   }
 
  
@@ -143,7 +151,68 @@ export class AdopcionesPage implements OnInit {
     onFileSelected(event: any): void {
       this.imagenSeleccionada = event.target.files[0];
     }
+    cambiarEstadoAdopcion(item:any) {
+      if (item.estadoadopcion === 'Retirado') {
+        item.estadoadopcion = 'No Retirado';
+        item.checked = false; // Desmarcar el checkbox
+      } else {
+        item.estadoadopcion = 'Retirado';
+        item.checked = true; // Marcar el checkbox
+      }
+    }
+
+  
+      
+    async onSetData(select: any, event: Event, item: any) {
+      if (select.estadoadopcion === 'Retirado') {
+        this.servicio.updateEstadoAdopcion(select.idadopcion, 'Retirado').subscribe(
+          async (response) => {         
+            const alert = await this.alertController.create({
+              cssClass: 'custom-alert',
+              header: '¡ Actualizacion Exitosa ¡',
+              message: 'El Estado de la Mascota ha sido actualizado "RETIRADO" con éxito',
+              buttons: [
+                {
+                  text: 'OK',
+                  cssClass: 'custom-button adopt-button',
+                  handler: () => {
+                    this.handleRefresh(event);
+                  }
+                }
+              ]
+            });
+        
+            await alert.present();
+          },
+          (error) => {
+            console.error('Error al actualizar el estado', error);
+          }
+        );
+      } else {
+
+        const alert = await this.alertController.create({
+          cssClass: 'custom-alert',
+          header: 'X Error X',
+          message: 'Estado no es "Retirado", no se realiza la actualización',
+          buttons: [
+            {
+              text: 'OK',
+              cssClass: 'custom-button adopt-button',
+              handler: () => {
+              }
+            }
+          ]
+        });
+        await alert.present();
+
+        
+        console.log('Estado no es "Retirado", no se realiza la actualización');
+      }
+    }
     
+   
+    
+
     onUpdateAdopciones(idadopcion: any, idcedula: any, idmascota: any, nombreusuario: any, apellidousuario: any, fecharetiro: any, password: any): void {
       if (!idadopcion) {
         this.presentToast(`#Adopcion No selecionado, Verificar`);
@@ -173,13 +242,11 @@ export class AdopcionesPage implements OnInit {
       }
     
   //eliminar Adopcion por idAdopcion
-  onDeleteAdopciones(idadopcion:any):void{
+    onDeleteAdopciones(idadopcion:any):void{
     if (!idadopcion) {   
        this.presentToast(`Campo Id vacio, Selecionar Adopcion!`);
-
         }else{
           this.servicio.deleteAdopciones(idadopcion).then(async(re:any)=>{
-        
             if(re.false){
               this.presentToast('Error al eliminar')
             }else{
@@ -192,39 +259,18 @@ export class AdopcionesPage implements OnInit {
       }
       
 
-      onSetData(select: any, event: Event) {
-        event.stopPropagation(); // Evita que el evento se propague a la fila
-        this.selectedRow = select;
-
-        this.elementos.idadopcion = select.idadopcion;
-
-        this.elementos.idcedula = select.idcedula;
-
-        this.elementos.idmascota = select.idmascota;
-
-        this.elementos.nombreusuario = select.nombreusuario;
-
-        this.elementos.apellidousuario = select.apellidousuario;
-
-        this.elementos.fecharetiro = select.fecharetiro;
-
-        this.elementos.password = select.password;
-  }
+  
 
   clear(){
     this.elementos.idadopcion = "";
     this.elementos.idcedula = "";
     this.elementos.idmascota= "";
-
     this.elementos.nombreusuario = "";
     this.elementos.apellidousuario = "";
-
     this.elementos.fecharetiro = "";
     this.elementos.password = "";
   }
   scrollToBottom() {
     this.content.scrollToBottom(300); // El número 300 representa la duración de la animación en milisegundos.
   }
-
-
 }

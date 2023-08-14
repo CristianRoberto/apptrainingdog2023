@@ -109,14 +109,18 @@ export class UserService {
         return this.http.delete(`${this.url}`+ `/adopciones` + `/${idadopcion}`,
         {headers:{"Content-Type":"application/json"}}).toPromise()
       }
-      onUpdateAdopciones(idadopcion: any, camposActualizados: FormData): Observable<any> {
-        return this.http.put<any>(`${this.url}/adopciones/${idadopcion}`, camposActualizados);
-      }
+    onUpdateAdopciones(idadopcion: any, camposActualizados: FormData): Observable<any> {
+       return this.http.put<any>(`${this.url}/adopciones/${idadopcion}`, camposActualizados);
+     }
     
+      updateEstadoAdopcion(idadopcion: any, nuevoEstado: any): Observable<any> {
+        const url = `${this.url}/adopciones/${idadopcion}`;
+        const body = { estadoAdopcion: nuevoEstado };
+        return this.http.put(url, body);
+      }
   
 
     //servicio adiestramiens// crud Adiestramientos//
-
     getAdiestramientos(){
       return this.http.get(`${this.url}`+ `/adiestramientos`,
     {headers:{"Content-Type":"application/json"}}).toPromise()

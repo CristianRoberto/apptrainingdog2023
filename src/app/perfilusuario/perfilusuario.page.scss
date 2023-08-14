@@ -7,6 +7,20 @@
   text-align: center;
   background: rgba(0, 255, 255, 0.246);
 }
+
+.rojo-text {
+  color: white;
+  background: red
+}
+
+.verde-text {
+  color: white;
+  background: green
+}
+
+
+
+
 /* Establecer un ancho máximo para el grid */
 ion-grid {
   max-width: 600px;

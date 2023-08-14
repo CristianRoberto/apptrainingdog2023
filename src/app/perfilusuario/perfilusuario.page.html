@@ -243,13 +243,14 @@
 					{{item.idmascota}}
 				</ion-text>
 			</ion-col>
-			<ion-col>
-				<ion-text>
-					 {{item.estadoadopcion}}
-				
+		
+			<ion-col [ngClass]="{'rojo-text': item.estadoadopcion === 'No Retirado', 'verde-text': item.estadoadopcion !== 'No Retirado'}" >
+				<ion-text >
+						Mascota<br> {{ item.estadoadopcion }}
 				</ion-text>
-			</ion-col>
-
+			  </ion-col>
+			  
+			  
 		</ion-row>
 		<br><br><br>
 		<div><br>
