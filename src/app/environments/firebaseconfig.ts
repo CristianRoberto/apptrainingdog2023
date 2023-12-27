@@ -1,7 +1,7 @@
 export const firebaseConfig = {
     apiKey: "AIzaSyCLnupKiLd0oZxktKQgHetPoodHa-KqE6M",
     authDomain: "appcompras-46183.firebaseapp.com",
-    databaseURL: "https://appcompras-46183.firebaseio.com",
+    databaseURL: "https://api.marinosalava.com/",
     projectId: "appcompras-46183",
     storageBucket: "appcompras-46183.appspot.com",
     messagingSenderId: "538675506453",

@@ -31,6 +31,7 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
+    "cordova-plugin-camera": "^7.0.0",
     "date-fns": "^2.30.0",
     "ionicons": "^6.0.3",
     "jquery": "^3.6.3",

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {environment} from '../environments/environment';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +11,7 @@ export class UserService {
 //  get_logi(correo: any) {
   //  throw new Error('Method not implemented.');
   //}
-  url:any ='http://localhost:5000';
-
-
+  url:any ='https://api.marinosalava.com/';
 
   constructor(private http:HttpClient) {   
   }

@@ -86,7 +86,8 @@ export class PopoverlogiComponent implements OnInit {
           };
           localStorage.setItem('datos', JSON.stringify(datosUsuarioAdmin));
           // Redirigir a la página del perfil de administrador
-          window.location.href = "http://localhost:8100/perfiladmin/tabs/usuarios";
+          window.location.href = "/perfiladmin/tabs/usuarios";
+          
         } else {
           this.servicio.Token().subscribe(async token => {
             this.token = token;
