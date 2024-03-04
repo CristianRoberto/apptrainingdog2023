@@ -36,7 +36,11 @@ const routes: Routes = [
   {
     path: 'perfiladmin',
     loadChildren: () => import('./perfiladmin/perfiladmin.module').then( m => m.PerfiladminPageModule)
+  },  {
+    path: 'modal-vacunas',
+    loadChildren: () => import('./modal-vacunas/modal-vacunas.module').then( m => m.ModalVacunasPageModule)
   },
+
   
 ];
 @NgModule({

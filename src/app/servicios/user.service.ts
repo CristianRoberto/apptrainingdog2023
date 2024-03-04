@@ -11,7 +11,13 @@ export class UserService {
 //  get_logi(correo: any) {
   //  throw new Error('Method not implemented.');
   //}
-  url:any ='https://api.marinosalava.com/';
+ 
+  //url:any ='https://api.marinosalava.com/';
+  url:any ='http://127.0.0.1:5000';
+
+  
+  
+
 
   constructor(private http:HttpClient) {   
   }

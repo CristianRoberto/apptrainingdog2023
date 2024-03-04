@@ -9,7 +9,7 @@
     display: flex;
     padding: 0;
     width: 600%;
-    height: 500px;
+    height: 300px;
     animation: cambio 15s infinite alternate linear;
 }
 .imagenesdesplegables li{
@@ -51,76 +51,81 @@
         height: 100%;
     }
     }
-.bienvenidas{
-    text-align: center;
-    color: rgb(255, 255, 255);
-    font-size: 25px;
-}
-.bienvenidas h1{
-    color: rgb(0, 225, 255);
-    margin-top: -10px;
-    font-size: 40px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.bienvenidas p{
-font-family: Georgia, 'Times New Roman', Times, serif;    
-}
-.slider-title {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
-    margin-bottom: 10px;
+
+    .bienvenidas 
+    {
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      ion-card {
+        border: 1px solid #d7d8da;
+        background-color: rgba(0, 255, 255, 0.105);
+        padding: 10px;
+        width: 90%; /* Ancho del 90% del contenedor padre */
+        max-width: 500px; /* Ancho máximo */
+        margin: 0 auto; /* Centrar horizontalmente */
+    }
+    
+    
+      .bienvenidas h1 {
+        margin-top: -10px;
+        box-shadow: 10px 10px 155px 1px rgba(255, 255, 255, 0.875);
+        width: 50%;
+        text-align: center;
+        color: rgb(0, 225, 255);
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    } 
+
+
+  .botonEmpezar {
+      animation: pulse 2s infinite;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      width: 75%; /* La imagen ocupará el 100% del ancho del contenedor */
+      height: 75px;
+      
   }
 
-
-  .floatprinci {
-    bottom: 40px;
-    right: 40px;
-    width: 80%;
-    height: 80px;
-    background-color: #25d366;
-    color: #FFF;
-    border-radius: 2%;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 2px 2px 3px #999;
-    z-index: 1000;
-    animation: pulse 2s infinite;
-    overflow: hidden;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
+  
+  .content-wrapper {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
   
-  .float:hover {
-    text-decoration: none;
-    color: #25d366;
-    background-color: #fff;
+  .content-inner {
+    max-width: 100%;
   }
   
-  .my-float {
-    margin-top: 16px;
+
+  .imagenesdesplegables ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
   }
   
-  .float::before {
-    content: "";
-    position: absolute;
-    top: -120%;
-    left: -120%;
-    width: 320%;
-    height: 320%;
-    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 75%);
-    transform: rotate(45deg);
-    z-index: -1;
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
+  .card-body {
+    width: 100%;
   }
   
-  .float:hover::before {
-    top: -60%;
-    left: -60%;
-    opacity: 1;
+  .store-img {
+    max-width: 100%;
+    height: auto;
   }
   
+  .start-button {
+    margin-top: 20px;
+  }
   

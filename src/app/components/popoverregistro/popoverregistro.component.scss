@@ -1,15 +1,32 @@
-.btn.btn-primary.buto{
-    color: rgb(255, 255, 255);
-    background: #006ca3;
-    height: 60px;
-    width: 200px;  
-    font-size: 19px; 
-    border-radius: 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.btn.btn-primary.buto {
+    color: #000000;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
-.btn.btn-primary.buto:hover{
-    background: #004567;
+
+.btn.btn-primary.buto:hover {
+    background-color: #004567;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+    color: white;
 }
+
+.btn.btn-primary.buto:active {
+    transform: translateY(2px);
+}
+.text-right{
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.btn.botoniniciar:hover {
+    background-color: #004567; /* Cambia el color de fondo al hacer hover */
+    border-color: #004567; /* Cambia el color del borde al hacer hover */
+  }
+  
+
 .preview-img{
     top: 65px;
     background-color: #f9f9f9;
@@ -29,18 +46,10 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.text-right{
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-}
+
 
 .itemregistro{
     width: 100%;
 }
 
-.custom-svg {
-
-}
-  
+ 

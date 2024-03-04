@@ -14,10 +14,9 @@
 
     </ion-toolbar>
   </ion-header>
-
-  <ion-card-content style="margin-top: 20px; text-align: end;">
-    <div>
-
+<br>
+  <ion-card-content >
+    <div style="text-align: end;">
       <svg (click)="exit()" slot="end" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x-octagon"
         viewBox="0 0 35 5">
         <path
@@ -25,66 +24,70 @@
         <path
           d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
       </svg>
-    </div><br>
-    <div class="card-body" style="border: #d7d8da 1px solid;text-align: center;  ">
-      <form #productForm="ngForm" class="ion-padding">
-        <img class="mascotafoto" src="{{mascota.foto}}" height="100px" width="180px" style="border-radius: 20px;"><br>
+    </div>
 
-        <ion-label position="floating">Número Mascota</ion-label>
+      <form #productForm="ngForm">
+        <div class="contenedor">
+        <img class="mascotafoto" src="{{mascota.foto}}" height="100px" width="180px" style="border-radius: 20px;"><br>
+        </div>
+
+        <ion-label position="floating" style="margin-left: 10px;">IdMascota</ion-label>
         <ion-item color="dark">
           <ion-input type="text"
-            style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
-            placeholder={{mascota.mascota}} required name="idmascota" [(ngModel)]="elementos.idmascota"
+            style="text-align: center; color: rgb(0, 0, 0); "
+            required name="idmascota" [(ngModel)]="elementos.idmascota"
             class="form-control">          
           </ion-input>
         </ion-item>
+   
 
-        <ion-label position="floating">Cédula ID</ion-label>
+        <ion-label position="floating" style="margin-left: 10px">Cédula ID</ion-label>
         <ion-item color="dark">
           <ion-input type="text"
-            style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
-            placeholder={{user.cedula}} required name="idcedula" [(ngModel)]="elementos.idcedula"
+            style="text-align: center; color: rgb(0, 0, 0); "
+            required name="idcedula" [(ngModel)]="elementos.idcedula"
             class="form-control"></ion-input>
         </ion-item>
 
-        <ion-label position="floating">Nombres Usuario</ion-label>
+
+
+
+        <ion-label position="floating" style="margin-left: 10px">Nombres Usuario</ion-label>
         <ion-item color="dark">
           <ion-input type="text"
-            style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
-            placeholder={{user.nombre}} required name="nombreusuario" [(ngModel)]="elementos.nombreusuario"
+            style="text-align: center; color: rgb(0, 0, 0); "
+            required name="nombreusuario" [(ngModel)]="elementos.nombreusuario"
             class="form-control"></ion-input>
         </ion-item>
 
-        <ion-label position="floating">Apellidos Usuario</ion-label>
+        <ion-label position="floating" style="margin-left: 10px">Apellidos Usuario</ion-label>
         <ion-item color="dark">
-          <ion-input type="text"
-            style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
-            placeholder={{user.apellidos}} required name="apellidousuario" [(ngModel)]="elementos.apellidousuario"
+          <ion-input type="text" style="text-align: center; color: rgb(0, 0, 0); "
+            required name="apellidousuario" [(ngModel)]="elementos.apellidousuario"
             class="form-control"></ion-input>
         </ion-item>
 
-        <ion-label position="floating">Fecha de Retiro</ion-label>
-        <div style="position: relative;">
-          <ion-item color="dark" >
-            <div style="display: flex; flex-direction: column; align-items: center; ">
-              <ion-input (click)="showCalendar = true" style="text-align: center;"
-    placeholder="yyyy-MM-dd" required name="fecharetiro" [(ngModel)]="elementos.fecharetiro"
-    class="form-control">
-</ion-input>
-
-              <ion-datetime *ngIf="showCalendar" display-format="yyyy-MM-dd" picker-format="yyyy-MM-dd"
-                style="text-align: center; color: rgb(0, 0, 0); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; width: 80%;border: aqua 3px solid;background: rgba(0, 255, 255, 0.171);"
-                (ionChange)="onDateSelect($event); showCalendar = false" interface="popover">
-              </ion-datetime>
-            </div>
-          </ion-item>
-        </div>
+        <ion-label position="floating" style="margin-left: 10px">Fecha de Retiro</ion-label>      
+        <ion-item color="dark">
+          <ion-input (click)="showCalendar = true" style="text-align: center;"
+            placeholder="Año-Mes-dia" required name="fecharetiro" [(ngModel)]="elementos.fecharetiro"
+            class="form-control">
+          </ion-input>
+        
+          <ion-datetime *ngIf="showCalendar" display-format="yyyy-MM-dd" picker-format="yyyy-MM-dd"
+            style="color: rgb(0, 0, 0); border: aqua 2px solid;background: rgba(0, 255, 255, 0.171);"
+            (ionChange)="onDateSelect($event); showCalendar = false"
+            [min]="minDate">
+          </ion-datetime>
+        </ion-item>
+        
+        
+        
+        
         
         <ion-item color="dark">
-          <ion-label position="floating" style="text-align: center;margin: 0 auto;align-items: center;">Confirmar
-            contraseña</ion-label>
-          <ion-input type="password" style="text-align: center; color: rgb(0, 0, 0); font-family: 
-                'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" placeholder="password" required
+          <ion-label position="floating" style="margin-left: 10px;">Confirmar Contraseña</ion-label>
+          <ion-input type="password" style="text-align: center; color: rgb(0, 0, 0);" placeholder="password" required
             name="password" [(ngModel)]="elementos.password" class="form-control">
           </ion-input>
         </ion-item>
@@ -101,15 +104,11 @@
             </ion-card-content>
           </ion-card>
         </div>
-
       </form>
-    </div>
 
     <ion-row>
       <ion-col size="12" style="margin-top: 5px;">
-
-        <div class="text-right" style="width:  80%; margin: 0 auto;  ">
-
+        <div >
           <ion-buttons type="button" (click)="Guardar(productForm)" slot="primary" class="edit-button">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-save2" viewBox="0 0 15 20">
               <path

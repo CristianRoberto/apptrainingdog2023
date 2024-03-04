@@ -36,9 +36,6 @@ export class PrinciPage implements OnInit {
     autoHeight: true
   };
 
-
-
-
   constructor(private form: FormBuilder,
     public popover: PopoverController,
     public toast: ToastController,
@@ -68,7 +65,7 @@ export class PrinciPage implements OnInit {
       this.products = re;
       this.auxproducts = this.products;
       await loading.dismiss();
-      this.presentToast("Conectado Con el Servidor");
+      this.presentToast("Bienvenido, Conectado Con el Servidor");
     }).catch(async (e) => {
       await loading.dismiss();
       this.presentToast("Error de conexion con el Servidor");

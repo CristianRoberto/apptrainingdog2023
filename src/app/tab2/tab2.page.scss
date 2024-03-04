@@ -1,5 +1,5 @@
   .slider-title {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     margin-bottom: 20px;
   }  
@@ -8,6 +8,12 @@
     justify-content: center;
     margin: 0 auto;
   }
+
+  .expanded {
+    height: auto !important; /* Ajusta la altura para mostrar todo el contenido */
+    overflow: visible !important; /* Permite que el contenido excedente sea visible */
+}
+
   .story-card {
     display: flex;
     flex-direction: column;
@@ -29,11 +35,9 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   }
   .story-card-image img {
-
-height: 100px; 
-width: 1000px;
-
-}
+    height: 100px; 
+    width: 1000px;
+  }
   
   .story-card-title {
     font-size: 10px;
@@ -60,12 +64,8 @@ label{ color:rgb(28, 22, 22);
   input[type = "radio"]:checked ~ label{color:orange;}
   /*div estrellas */
   
-    .todo {
-  margin: 0 auto;
-    }  
-
     .star{
-  margin: 0 auto;
+    margin: 0 auto;
     }
   /*imagen*/
   .imgs

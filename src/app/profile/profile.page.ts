@@ -41,7 +41,7 @@ export class ProfilePage implements OnInit {
         //hago la peticion al servicio RESTSERVICE
         const loading = await this.loadingController.create({ message: 'Cargando...' });
       await loading.present();
-        this.RestService.get(`https://api.marinosalava.com/mascotas/${this.profileId}`)
+        this.RestService.get(`http://127.0.0.1:5000/mascotas/${this.profileId}`)
         .subscribe(async respuesta =>{
           this.chracter = respuesta;
 

@@ -229,13 +229,13 @@
 				<ion-text>Estado</ion-text>
 			</ion-col>
 		</ion-row>
-		<ion-row *ngFor="let item of  products;">
+		<ion-row *ngFor="let item of products;" style=" align-items: center; justify-content: center;">
 			<ion-col>
 				<img class="foto" src="{{item.foto}}" height="50px" width="100px">
 			</ion-col>
-			<ion-col>
-				<ion-text>
-					{{item.fecharetiro}}
+			<ion-col style="white-space: nowrap;">
+				<ion-text >
+					{{ item.fecharetiro }}
 				</ion-text>
 			</ion-col>
 			<ion-col>
@@ -243,15 +243,13 @@
 					{{item.idmascota}}
 				</ion-text>
 			</ion-col>
-		
-			<ion-col [ngClass]="{'rojo-text': item.estadoadopcion === 'No Retirado', 'verde-text': item.estadoadopcion !== 'No Retirado'}" >
-				<ion-text >
-						Mascota<br> {{ item.estadoadopcion }}
+			<ion-col [ngClass]="{'rojo-text': item.estadoadopcion === 'No Retirado', 'verde-text': item.estadoadopcion !== 'No Retirado'}" style="display: flex; align-items: center; justify-content: center;">
+				<ion-text>
+					Mascota<br> {{ item.estadoadopcion }}
 				</ion-text>
-			  </ion-col>
-			  
-			  
+			</ion-col>
 		</ion-row>
+		
 		<br><br><br>
 		<div><br>
 			<img class="fotologo" src="assets/icon/dog.png">

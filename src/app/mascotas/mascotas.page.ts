@@ -6,6 +6,9 @@ import {UserService} from '../servicios/user.service';
 import { PopoverController } from '@ionic/angular';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import { ModalController } from '@ionic/angular';
+import { ModalVacunasPage } from '../modal-vacunas/modal-vacunas.page';
+
 
 
 @Component({
@@ -22,26 +25,56 @@ export class MascotasPage implements OnInit {
   auxproducts=[];
   searchedUser: any;
   elementos:any = {
+    estatura: null,
+    nombreraza: null,
+    sexo: null, // Inicializa el valor de sexo como null
     formato: "",
     tipob: "",
     bus:''
-
      };
      selectedRow: any = null;
      productForm: any
   public archivoCargado:any;
      public totalArchivoCargado = 0;
      public tamanioArchivoCargado = 0;
+
   constructor(public popover: PopoverController,
     public toast: ToastController,
     private servicio: UserService,
     private sanitizer: DomSanitizer,
-
+    private modalController: ModalController,
     public loadingController: LoadingController,
     ) {}
+
+    async abrirModalVacunas() {
+      const modal = await this.modalController.create({
+        component: ModalVacunasPage,
+        componentProps: {
+          vacunasSeleccionadas: this.elementos.vacunas // Pasa las vacunas seleccionadas al modal
+        }
+      });
+      
+      // Espera a que se cierre el modal y recibe los datos de vuelta
+      modal.onDidDismiss().then((data) => {
+        if (data && data.data) {
+          // Actualiza las vacunas seleccionadas con los datos recibidos del modal
+          this.elementos.vacunas = data.data.vacunasSeleccionadas;
+          // Imprime las vacunas seleccionadas en la consola
+          console.log("Vacunas seleccionadas:", this.elementos.vacunas);
+        }
+      });    
+      return await modal.present();
+    }
+    
+
+
+
+
+
   ngOnInit() {
     this.search();
   }
+
  
   onInput2(){
     this.elementos.bus='';

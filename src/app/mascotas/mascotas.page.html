@@ -6,7 +6,8 @@
 		</ion-buttons>
 
 		<ion-title class="titulo" style="font-family: Georgia, 'Times New Roman', Times, serif;">Listado
-			Mascotas</ion-title>
+			Mascotas
+		</ion-title>
 		<div slot="end">
 			<svg version="1.0" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 				x="0px" y="0px" viewBox="0 0 2500 100" style="enable-background:new 0 0 2020 2020;"
@@ -226,9 +227,9 @@
 
 		</ion-row>
 	</ion-grid>
-	<div class="card-body" style="border: #d7d8da 1px solid;">
+	<div class="card-body" style="border: #d7d8da 1px solid; background: rgba(0, 255, 255, 0.246)">
 		<h1 style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-			Mascotas</h1>
+			Registro de Mascotas</h1>
 
 		<form #productForm="ngForm">
 			<div class="row mt-5">
@@ -251,7 +252,7 @@
 
 				<div class="col-md-4">
 					<label for="txtDesc" class="from-label">nombreraza</label>
-					<ion-input type="text" placeholder="Nombres" required name="nombreraza"
+					<ion-input type="text" placeholder="Nombre Raza" required name="nombreraza"
 						[(ngModel)]="elementos.nombreraza" class="form-control"></ion-input>
 				</div>
 
@@ -265,18 +266,26 @@
 					<ion-input type="text" placeholder="edad" required name="edad" [(ngModel)]="elementos.edad"
 						class="form-control"></ion-input>
 				</div>
+
 				<div class="col-md-4">
-					<label for="txtDesc" class="from-label"> estatura</label>
-					<ion-input type="text" placeholder="estatura" required name="estatura"
-						[(ngModel)]="elementos.estatura" class="form-control"></ion-input>
-				</div>
+					<label for="txtDesc" class="from-label">Estatura</label>
+					<select class="form-select form-control" aria-label="Default select example" placeholder="estatura" required name="estatura" [(ngModel)]="elementos.estatura">
+					  <option [value]="null" selected disabled>Seleccionar Estatura</option>
+					  <option value="Pequeño">Pequeño</option>
+					  <option value="Mediano">Mediano</option>
+					  <option value="Grande">Grande</option>
+
+					</select>
+				  </div>
 
 
 				<div class="col-md-4">
 					<label for="txtDesc" class="from-label"> vacunas</label>
-					<ion-input type="text" placeholder="vacunas" required name="vacunas" [(ngModel)]="elementos.vacunas"
-						class="form-control"></ion-input>
-				</div>
+					<ion-input type="text" placeholder="Seleccionar Vacunas" required name="vacunas" [(ngModel)]="elementos.vacunas"
+							   class="form-control" (click)="abrirModalVacunas()"></ion-input>
+				  </div>
+
+				
 				<div class="col-md-4">
 					<label for="txtDesc" class="from-label">descripcion</label>
 					<ion-input type="text" placeholder="descripcion" required name="descripcion"
@@ -284,16 +293,14 @@
 				</div>
 
 
-
-				<div class="col-md-4">
-					<label for="txtDesc" class="from-label">sexo</label>
-					<ion-input type="text" placeholder="sexo" required name="sexo" [(ngModel)]="elementos.sexo"
-						class="form-control"></ion-input>
-				</div>
-
-
-
-
+						<div class="col-md-4">
+							<label for="txtDesc" class="from-label">Sexo</label>
+							<select class="form-select form-control" aria-label="Default select example" placeholder="Sexo" required name="sexo" [(ngModel)]="elementos.sexo">
+							  <option [value]="null" selected disabled>Seleccionar Sexo</option>
+							  <option value="Macho">Macho</option>
+							  <option value="Hembra">Hembra</option>
+							</select>
+						  </div>		  
 
 			</div>
 		</form>
@@ -308,6 +315,9 @@
 				<button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
 			</div>
 		</div>
+	</div>
+	<div>
+		<h1 style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Mascotas Ingresadas</h1>
 	</div>
 
 	<div class="table-container">

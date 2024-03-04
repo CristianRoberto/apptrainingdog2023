@@ -103,41 +103,60 @@ export class PopoverregistroComponent implements OnInit {
   }
 
   Guardar(producForm: NgForm) {
-    console.log(producForm)
-    if (producForm.valid) {
-      if (producForm.value.telefono.length == 10 && producForm.value.cedula.length == 10) {
-        let archivo = this.archivoCargado;
-        let reader = new FileReader();
-        console.log(archivo);
-        reader.readAsDataURL(archivo);
-        reader.onload = () => {
-          let archivoByte: any = reader.result;
-          archivoByte = archivoByte.toString();
-          producForm.value.foto = archivoByte
-          console.log(producForm.value)
-          this.servicio.postuser(producForm.value).then(async (re: any) => {
-            if (re.false) {
-              this.presentToast('Error al guardar')
-            } else {
-              this.presentToast('Usuario Creado con ExiTo')
-              await this.popover.dismiss({
-
-                cont: 1
-
-              });
-
-            }
-          }).catch((_e) => {
-            this.presentToast('Error de conexion')
-          })
-        };
-      } else {
-        this.presentToast('Cedula y Telefono,tienen que tener 10 digitos')
-
-      }
-    } else {
-      this.presentToast('Campos Vacios o datos con formato incorrecto ')
+    // Verificar si todos los campos están vacíos
+    if (!producForm.value.telefono || !producForm.value.cedula) {
+      this.presentToast('Por favor, complete todos los campos');
+      return;
     }
+  
+    // Verificar la validez de la cédula o pasaporte
+    const cedulaOrPasaporte = producForm.value.cedula;
+    if (/^\d{10}$/.test(cedulaOrPasaporte)) {
+      console.log('Es una cédula ecuatoriana');
+      // Aquí puedes realizar las acciones específicas para una cédula ecuatoriana
+    } else if (/^.{6,16}$/.test(cedulaOrPasaporte)) {
+      console.log('Es un pasaporte de una persona extranjera');
+      // Aquí puedes realizar las acciones específicas para un pasaporte de una persona extranjera
+    } else {
+      this.presentToast('La cédula o pasaporte no tiene el formato correcto');
+      return;
+    }
+    
+    // Verificar la longitud del teléfono
+    const telefono = producForm.value.telefono;
+    if (telefono.length !== 10) {
+      this.presentToast('El teléfono debe tener 10 dígitos');
+      return;
+    }
+  
+    // El resto del código para leer el archivo y enviar los datos al servidor permanece igual
+    let archivo = this.archivoCargado;
+    let reader = new FileReader();
+    console.log(archivo);
+    reader.readAsDataURL(archivo);
+    reader.onload = () => {
+      let archivoByte: any = reader.result;
+      archivoByte = archivoByte.toString();
+      producForm.value.foto = archivoByte;
+      console.log(producForm.value);
+      this.servicio.postuser(producForm.value).then(async (re: any) => {
+        if (re.false) {
+          this.presentToast('Error al guardar');
+        } else {
+          this.presentToast('Usuario Creado con Éxito');
+          await this.popover.dismiss({
+            cont: 1
+          });
+        }
+      }).catch((_e) => {
+        this.presentToast('Error de conexión');
+      });
+    };
   }
+  
+
+  
+  
+  
 
 }

@@ -1,8 +1,8 @@
 <ion-header>
-  <ion-toolbar color="primary" style="height: 60px; ">
+  <ion-toolbar color="dark" style="height: 60px; ">
     <ion-card-header>
       <ion-card-title
-        style="text-align: center;  font-family: Georgia, 'Times New Roman', Times, serif; margin-top: 0px;">REGISTRO
+        style="text-align: center;  font-family: Georgia, 'Times New Roman', Times, serif; margin-top: 0px; color: white;">REGISTRO
       </ion-card-title>
     </ion-card-header>
     <ion-buttons slot="end" color="danger" (click)="exit()" style="margin-left: 2px;">
@@ -20,7 +20,7 @@
 
 
 </ion-header>
-<ion-content color="danger">
+<ion-content color="dark">
   <ion-grid>
     <ion-row style="justify-content: center;">
       <ion-col size="10">
@@ -34,9 +34,8 @@
           <form #productForm="ngForm">
             <div class="form-group row">
               <ion-item class="itemregistro">
-                <ion-icon slot="start" name="albums-outline"></ion-icon>
-                <ion-input type="text" maxlength="10" minlength="10" pattern="[0-9]+" placeholder="Cedula" required
-                  name="cedula" [(ngModel)]="elementos.cedula" class="fadeIn second"></ion-input>
+                <ion-icon slot="start" name="albums-outline"></ion-icon>    
+                  <ion-input type="text" minlength="6" maxlength="16" pattern="[0-9]+" placeholder="Cedula-Pasaporte" required name="cedula" [(ngModel)]="elementos.cedula" class="fadeIn second"></ion-input>
               </ion-item>
             </div>
             <div class="form-group row">
@@ -70,7 +69,7 @@
             <div class="form-group row">
               <ion-item class="itemregistro">
                 <ion-icon slot="start" name="phone-portrait-outline"></ion-icon>
-                <ion-input type="text" maxlength="10" minlength="10" pattern="[0-9]+" placeholder="Telefono" required
+                <ion-input type="text" maxlength="10" minlength="10" pattern="[0-9]+" placeholder="Celular" required
                   name="telefono" [(ngModel)]="elementos.telefono" class="fadeIn second"></ion-input>
               </ion-item>
             </div>
@@ -95,21 +94,38 @@
       </ion-col>
     </ion-row>
     <ion-row>
+
       <ion-col size="12" style="margin-top: 5px;">
-        <div class="text-right">
-          <button type="button" (click)="Guardar(productForm)" class="btn btn-primary buto"
-            style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Guardar Usuario
-            
-
-            <svg class="custom-svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor"  viewBox="0 -5 55 1">
-              <path
-              d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v4.5h2a.5.5 0 0 1 .354.854l-2.5 2.5a.5.5 0 0 1-.708 0l-2.5-2.5A.5.5 0 0 1 5.5 6.5h2V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
-          </svg>
-            
-
-
-
+        <div class="text-right" >
+          <button type="button" (click)="Guardar(productForm)" class="btn botoniniciar">
+            <div style="background: rgb(0, 60, 99); display: flex; justify-content: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            align-items: center;border: 2px solid white;">
+              <div style="margin-left: 50px;">
+                  <span>Guardar Usuario</span>
+                  <svg class="custom-svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -5 45 1">
+                      <path
+                          d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v4.5h2a.5.5 0 0 1 .354.854l-2.5 2.5a.5.5 0 0 1-.708 0l-2.5-2.5A.5.5 0 0 1 5.5 6.5h2V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
+                  </svg>
+              </div>
+            </div>
+          
           </button>
+
+
+          <!-- <button type="button" (click)="Guardar(productForm)" class="btn botoniniciar">
+            <div style="display: flex; align-items: center;">
+              <span>Guardar Usuario</span>
+              <svg class="custom-svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -5 45 1">
+                <path
+                    d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v4.5h2a.5.5 0 0 1 .354.854l-2.5 2.5a.5.5 0 0 1-.708 0l-2.5-2.5A.5.5 0 0 1 5.5 6.5h2V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
+              </svg>
+            </div>
+          </button> -->
+          
+
+
+
+
         </div>
       </ion-col>
     </ion-row>

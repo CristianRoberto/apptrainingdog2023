@@ -1,39 +1,38 @@
-<ion-content color="dark">
-  <br>
-  <div>
-    <img src="assets/icon/dog.png" alt="">
-    <br><br>
-  </div>
-  <div class="imagenesdesplegables" style="background: rgb(255, 255, 255);">
-    <ul>
-      <li><img src="assets/icon/slider-014.png" alt=""></li>
-      <li><img src="assets/icon/slider-019.png" atl=""></li>
-      <li><img src="assets/icon/slider-014.png" alt=""></li>
-      <li><img src="assets/icon/slider-018.png" alt=""></li>
-      <li><img src="assets/icon/slider-012.jpg" alt=""></li>
-      <li><img src="assets/icon/sistemas.png" alt="" style="background: black;"></li>
-    </ul>
-  </div>
-  <br>
-  <div class="card-body" style="border: #d7d8da 1px solid;">
-    <div class="bienvenidas">
-      <h1> Bienvenidos <br>a nuestra <br>Aplicacion Movil</h1>
-      <p>Quieres utilizar nuestros servicios y ser parte de la comunidad de ayuda para el cuidado y rescate canino mas
-        grande del Ecuador.
-        <br>Primeramente debera Registrarse e iniciar seccion.
-        <br> Una vez Ingresado dentro de este aplicativo podra realizar las siguiente funciones:
-      <div class="slider-title">*Tips de Adiestramientos y cuidados caninos.<br>*Adopciones Mascotas..
+<ion-content color="dark" class="content-wrapper">
+  <div class="content-inner">
+    <img class="logo" src="assets/icon/dog.png" width="100%" >
+    <div class="imagenesdesplegables" style="background: rgb(255, 255, 255);">
+      <ul>
+        <li><img src="assets/icon/slider-014.png" alt=""></li>
+        <li><img src="assets/icon/slider-019.png" alt=""></li>
+        <li><img src="assets/icon/slider-014.png" alt=""></li>
+        <li><img src="assets/icon/slider-018.png" alt=""></li>
+        <li><img src="assets/icon/slider-012.jpg" alt=""></li>
+        <li><img src="assets/icon/sistemas.png" alt="" style="background: black;"></li>
+      </ul>
+    </div>
+    <div class="card-body" style="text-align: center; border: #d7d8da 1px solid;">
+      <div class="bienvenidas">
+        <h1> Bienvenidos </h1>
+        <p>Quieres utilizar nuestros servicios y ser parte de la comunidad de ayuda para el cuidado y rescate canino más
+          grande del Ecuador. Primeramente deberás registrarte e iniciar sesión. Una vez ingresado dentro de este
+          aplicativo podrás realizar las siguientes funciones:</p>
+        <div class="slider-title">
+          <strong>* Tips de Adiestramientos * <br>* Cuidados caninos *</strong><br>
+          <strong>.. * Adopciones de Mascotas *..</strong>
+        </div>
       </div>
       <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
+     
       <ion-grid>
         <ion-row>
           <ion-slides pager="true" [options]="slideOptsTwo">
-            <ion-col class="todo" *ngFor="let store of products">
-              <ion-card class="card-body2" style="border: #d7d8da 1px solid; background: rgba(0, 255, 255, 0.105);">
+            <ion-col *ngFor="let store of products">
+              <ion-card style="border: #d7d8da 1px solid; background: rgba(0, 255, 255, 0.105); padding: 1px; margin: 5px;">
+                <!-- Contenido del ion-card -->          
                 <img src="{{store.foto}}" height="100px" width="1200px" style="border-radius:2px;">
-
                 <div class="content-store">
                   <ion-card-title style="width: 100%;">{{store.titulo}}</ion-card-title>
                   <ion-row style="width: 100%;">
@@ -42,9 +41,9 @@
                       <br>
                       <ion-icon name="navigate"></ion-icon>Adoptame
                     </ion-card-subtitle>
-                  </ion-row>
+                  </ion-row>       
                   <ion-row style=" width: 100%;">
-                    <div style="margin-right: 10px;">
+                    <div style="margin-right: 10px; text-align: center; align-content: center; margin: 0 auto;">
                       <p class="clasificacion">
                         <input id="radio1" type="radio" name="estrellas" value="5" checked><!--
                         --><label for="radio1">★</label><!--
@@ -56,13 +55,15 @@
                         --><label for="radio4">★</label><!--
                         --><input id="radio5" type="radio" name="estrellas" value="1"><!--
                         --><label for="radio5">★</label>
-                      </p>
-                    </div>
-                  </ion-row>
-                  <ion-button (click)="Ingresarlogin()" color="warning"
-                    style="border-radius: 20px; border: #d7d8da 5px solid; font-family: 'Courier New', Courier, monospace; ">
-                    <h2>Adoptar </h2>
+                      </p>        <br>             
+                    <ion-button (click)="Ingresarlogin()" color="warning"
+                     style="border-radius: 5px; border: #d7d8da 5px solid; font-family: 'Courier New', Courier, monospace; margin-top: -20px;">
+                     <h2> Adoptar </h2>
                   </ion-button>
+                </div>
+                  </ion-row>
+
+            
                 </div>
               </ion-card>
             </ion-col>
@@ -70,14 +71,13 @@
         </ion-row>
       </ion-grid>
     </div>
-  </div>
-  <div>
-    <br><br>
-    <ion-button style="width: 80%;" class="floatprinci" color="warning" (click)="login()">
+
+    <ion-button class="botonEmpezar" (click)="login()">
       <ion-icon name="paw-outline"></ion-icon>_
       <h2>EMPEZAR</h2>
       _<ion-icon name="paw-outline"></ion-icon>
-    </ion-button>
+    </ion-button><br>
   </div>
-  <br><br><br>
 </ion-content>
+                
+          
