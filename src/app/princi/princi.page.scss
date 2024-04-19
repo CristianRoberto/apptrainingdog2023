@@ -1,131 +1,130 @@
-.titulo{     
-    color: rgb(5, 163, 255);
-    font-size: 60px;
+////Adaptacion de Pantalla///
+.content-wrapper {
+  height: 100vh; /* Establecer la altura del contenedor principal al 100% del alto de la ventana del navegador */
+  overflow-y: auto; /* Permitir desplazamiento vertical si el contenido excede el tamaño de la pantalla */
 }
+
+.content-inner {
+  height: 100%; /* Establecer la altura del contenido interno al 100% del contenedor principal */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-body {
+  flex: 1; /* Hacer que esta sección ocupe el espacio restante disponible */
+  width: 100%;
+}
+// //IMAGENES DESPLEGABLES//PANTALLA PRINCIPAL///
 .imagenesdesplegables {
-    box-shadow: 0 0 15px 9px rgb(255, 255, 255);
+overflow-x: auto;
 }
+
+.imagenesdesplegables {
+  box-shadow: 0 0 15px 9px rgb(255, 255, 255);
+  height: 300px; /* Establecer la altura deseada para el contenedor */
+  overflow: hidden; /* Ocultar cualquier parte de las imágenes que se salga del contenedor */
+}
+
 .imagenesdesplegables ul {
-    display: flex;
-    padding: 0;
-    width: 600%;
-    height: 300px;
-    animation: cambio 15s infinite alternate linear;
+  display: flex;
+  padding: 0;
+  width: 600%; /* Ajustar según sea necesario */
+  height: 128%; /* Hacer que el ul ocupe toda la altura del contenedor */
+  animation: cambio 15s infinite alternate linear;
 }
+
+.imagenesdesplegables img {
+  width: 100%; /* Hacer que las imágenes ocupen el 100% del ancho del contenedor */
+  height: 80%; /* Ajustar automáticamente la altura para mantener las proporciones originales de la imagen */
+}
+
 .imagenesdesplegables li{
-    width: 190%;
-    list-style: none;
+  width: 190%;
+  list-style: none;
 }
-.imagenesdesplegables img{
-    width: 100%;
-    height: 100%;
-}
+
 @keyframes cambio {
-    0% { margin-left: 0; }
-    20% { margin-left: 0;}
-
-    25%{ margin-left: -100%;}
-    35%{ margin-left: -100%;}
-    40%{ margin-left: -200%;}
-    50%{ margin-left: -200%;}
-    55%{ margin-left: -300%;}
-    65%{ margin-left: -300%;}
-    70%{ margin-left: -400%;}
-    85%{ margin-left: -400%;}
-    90%{ margin-left: -500%;}
-    100%{ margin-left: -500%;}
+0% { margin-left: 0; }
+20% { margin-left: 0;}
+25%{ margin-left: -100%;}
+35%{ margin-left: -100%;}
+40%{ margin-left: -200%;}
+50%{ margin-left: -200%;}
+55%{ margin-left: -300%;}
+65%{ margin-left: -300%;}
+70%{ margin-left: -400%;}
+85%{ margin-left: -400%;}
+90%{ margin-left: -500%;}
+100%{ margin-left: -500%;}
 }
-@media only screen and (max-width:700px){
-    .imagenesdesplegables ul {
-        display: flex;
-        padding: 0;
-        height: 20%;
-        animation: cambio 15s infinite alternate linear;
-    }
-    .imagenesdesplegables li{
-        width: 190%;
-        list-style: none;
-    }
-    .imagenesdesplegables img{
-        width: 100%;
-        height: 100%;
-    }
-    }
 
-    .bienvenidas 
-    {
-        margin: 0 auto;
-        justify-content: center;
-        align-items: center;
-      }
-    
-      ion-card {
-        border: 1px solid #d7d8da;
-        background-color: rgba(0, 255, 255, 0.105);
-        padding: 10px;
-        width: 90%; /* Ancho del 90% del contenedor padre */
-        max-width: 500px; /* Ancho máximo */
-        margin: 0 auto; /* Centrar horizontalmente */
-    }
-    
-    
-      .bienvenidas h1 {
-        margin-top: -10px;
-        box-shadow: 10px 10px 155px 1px rgba(255, 255, 255, 0.875);
-        width: 50%;
-        text-align: center;
-        color: rgb(0, 225, 255);
-        margin: 0 auto;
-        justify-content: center;
-        align-items: center;
-        font-family: Georgia, 'Times New Roman', Times, serif;
-    } 
+.content-store{
+  background: white;
+}
+
+.ion-card {
+  border: 1px solid #d7d8da;
+  background-color: rgba(0, 255, 255, 0.105);
+  padding: 10px;
+  width: 90%; /* Ancho del 90% del contenedor padre */
+  max-width: 500px; /* Ancho máximo */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+
+.bienvenidas h1 {
+  margin-top: -10px;
+  box-shadow: 10px 10px 155px 1px rgba(255, 255, 255, 0.875);
+  width: 50%;
+  text-align: center;
+  color: rgb(0, 225, 255);
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+} 
+
+.store-card {
+  width: 100%; /* Asegurar que las tarjetas de la tienda ocupen el 100% del ancho disponible */
+  border: 1px solid #d7d8da;
+  background-color: rgba(0, 255, 255, 0.105);
+  height: auto;
+}
+
+.store-card img {
+  border-radius: 2px;
+}
+
+.rating {
+  text-align: center;
+}
+
+.rating input[type="radio"] {
+  display: none;
+}
+
+.rating label {
+  font-size: 24px;
+  color: #ffd700;
+}
 
 
-  .botonEmpezar {
-      animation: pulse 2s infinite;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      margin: 0 auto;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      width: 75%; /* La imagen ocupará el 100% del ancho del contenedor */
-      height: 75px;
-      
-  }
+.adopt-button {
+  border-radius: 5px;
+  border: 5px solid #d7d8da;
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 10px;
+}
 
-  
-  .content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-  
-  .content-inner {
-    max-width: 100%;
-  }
-  
+.empezar {
+  animation: pulse 2s infinite;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 75%; /* La imagen ocupará el 100% del ancho del contenedor */
+  height: 60px;
+  background: white;
+}
 
-  .imagenesdesplegables ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .card-body {
-    width: 100%;
-  }
-  
-  .store-img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .start-button {
-    margin-top: 20px;
-  }
-  

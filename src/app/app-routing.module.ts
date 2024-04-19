@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { CameraPage } from './camera/camera.page';
 
 const routes: Routes = [
   {
@@ -36,16 +37,28 @@ const routes: Routes = [
   {
     path: 'perfiladmin',
     loadChildren: () => import('./perfiladmin/perfiladmin.module').then( m => m.PerfiladminPageModule)
-  },  {
+  },
+  {
     path: 'modal-vacunas',
     loadChildren: () => import('./modal-vacunas/modal-vacunas.module').then( m => m.ModalVacunasPageModule)
+  },
+  {
+    path: 'camera',
+    loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule)
+  },
+
+
+  {
+    path: 'camera',
+    component: CameraPage, // Configura la ruta para el componente de la cámara
   },
 
   
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, 
+    { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]
 })

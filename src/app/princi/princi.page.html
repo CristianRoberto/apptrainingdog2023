@@ -1,9 +1,10 @@
 <ion-content color="dark" class="content-wrapper">
   <div class="content-inner">
     <img class="logo" src="assets/icon/dog.png" width="100%" >
-    <div class="imagenesdesplegables" style="background: rgb(255, 255, 255);">
+    <div class="imagenesdesplegables" style="background:white;">
+      <!-- <ul style="margin: 0; padding: 0; list-style: none; display: flex; overflow-x: auto;"> -->
       <ul>
-        <li><img src="assets/icon/slider-014.png" alt=""></li>
+        <li><img src="assets/icon/slider-014.png" alt="" ></li>
         <li><img src="assets/icon/slider-019.png" alt=""></li>
         <li><img src="assets/icon/slider-014.png" alt=""></li>
         <li><img src="assets/icon/slider-018.png" alt=""></li>
@@ -17,10 +18,8 @@
         <p>Quieres utilizar nuestros servicios y ser parte de la comunidad de ayuda para el cuidado y rescate canino más
           grande del Ecuador. Primeramente deberás registrarte e iniciar sesión. Una vez ingresado dentro de este
           aplicativo podrás realizar las siguientes funciones:</p>
-        <div class="slider-title">
           <strong>* Tips de Adiestramientos * <br>* Cuidados caninos *</strong><br>
           <strong>.. * Adopciones de Mascotas *..</strong>
-        </div>
       </div>
       <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
@@ -30,54 +29,42 @@
         <ion-row>
           <ion-slides pager="true" [options]="slideOptsTwo">
             <ion-col *ngFor="let store of products">
-              <ion-card style="border: #d7d8da 1px solid; background: rgba(0, 255, 255, 0.105); padding: 1px; margin: 5px;">
-                <!-- Contenido del ion-card -->          
-                <img src="{{store.foto}}" height="100px" width="1200px" style="border-radius:2px;">
+              <ion-card class="store-card">
+                <img src="{{store.foto}}" height="70px" width="100%">
                 <div class="content-store">
-                  <ion-card-title style="width: 100%;">{{store.titulo}}</ion-card-title>
-                  <ion-row style="width: 100%;">
-                    <ion-card-subtitle style="width: 100%; color: black;">
-                      <ion-icon name="paw-outline"></ion-icon>_Mascota_
-                      <br>
-                      <ion-icon name="navigate"></ion-icon>Adoptame
-                    </ion-card-subtitle>
-                  </ion-row>       
-                  <ion-row style=" width: 100%;">
-                    <div style="margin-right: 10px; text-align: center; align-content: center; margin: 0 auto;">
-                      <p class="clasificacion">
-                        <input id="radio1" type="radio" name="estrellas" value="5" checked><!--
-                        --><label for="radio1">★</label><!--
-                        --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                        --><label for="radio2">★</label><!--
-                        --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                        --><label for="radio3">★</label><!--
-                        --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                        --><label for="radio4">★</label><!--
-                        --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-                        --><label for="radio5">★</label>
-                      </p>        <br>             
-                    <ion-button (click)="Ingresarlogin()" color="warning"
-                     style="border-radius: 5px; border: #d7d8da 5px solid; font-family: 'Courier New', Courier, monospace; margin-top: -20px;">
-                     <h2> Adoptar </h2>
+                  <ion-card-title>{{store.titulo}}</ion-card-title>
+                  <ion-card-subtitle>
+                    <ion-icon name="paw-outline"></ion-icon> Mascota
+                    <br>
+                    <ion-icon name="navigate"></ion-icon> Adoptame
+                  </ion-card-subtitle>
+                  <div class="rating">
+                    <input id="radio1" type="radio" name="estrellas" value="5" checked>
+                    <label for="radio1">★</label>
+                    <input id="radio2" type="radio" name="estrellas" value="4">
+                    <label for="radio2">★</label>
+                    <input id="radio3" type="radio" name="estrellas" value="3">
+                    <label for="radio3">★</label>
+                    <input id="radio4" type="radio" name="estrellas" value="2">
+                    <label for="radio4">★</label>
+                    <input id="radio5" type="radio" name="estrellas" value="1">
+                    <label for="radio5">★</label>
+                  </div>
+                  <ion-button (click)="Ingresarlogin()" color="warning" class="adopt-button">
+                    <h2>Adoptar</h2>
                   </ion-button>
-                </div>
-                  </ion-row>
-
-            
                 </div>
               </ion-card>
             </ion-col>
           </ion-slides>
         </ion-row>
-      </ion-grid>
+      </ion-grid>     
     </div>
 
-    <ion-button class="botonEmpezar" (click)="login()">
+    <ion-button class="empezar" (click)="login()">
       <ion-icon name="paw-outline"></ion-icon>_
       <h2>EMPEZAR</h2>
       _<ion-icon name="paw-outline"></ion-icon>
     </ion-button><br>
   </div>
 </ion-content>
-                
-          

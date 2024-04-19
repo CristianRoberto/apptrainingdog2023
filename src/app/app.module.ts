@@ -12,6 +12,9 @@ import { CargarScriptsService  } from './servicios/cargar-scripts.service';
 
 import { FormsModule } from '@angular/forms';
 
+import { Camera } from '@ionic-native/camera/ngx';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     SplashScreen,
     CargarScriptsService,
     StatusBar,    
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

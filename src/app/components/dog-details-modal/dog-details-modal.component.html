@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles del Perro</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="background: yellow;">
+    <form #productForm="ngForm">
+
+      <ion-item>
+        <img [src]="photo" *ngIf="photo" alt="Imagen del perro">
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Descripción: </ion-label>
+        <!-- <ion-input [(ngModel)]="description"></ion-input> -->
+        <ion-input placeholder="Una Breve Descripción " required name="descripcion" [(ngModel)]="elementos.descripcion" ></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Dirección: </ion-label>
+        <ion-input (click)="obtenerUbicacion()" placeholder= "Obtener Ubicación" required name="direccion" [(ngModel)]="elementos.direccion"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Punto de Referencia: </ion-label>
+        <!-- <ion-input [(ngModel)]="location"></ion-input> -->
+        <ion-input placeholder= "Alguna Referencia Cercana" required name="puntoreferencia" [(ngModel)]="elementos.puntoreferencia" ></ion-input>
+      </ion-item>
+
+       <!-- Campo de la imagen -->
+  <!-- <ion-item>
+    <ion-label>Imagen del perro:</ion-label>
+    <ion-input type="file" name="imagenperro" [(ngModel)]="elementos.imagenperro"></ion-input>
+  </ion-item> -->
+
+
+    </form>
+  </div>
+<br><br>
+  <div style=" text-align: center;">
+  <div>
+    <button class="btn btn-primary" style="width: 250px;" type="button" (click)="Guardar(productForm)" >Enviar Reporte</button>
+  </div>
+  </div>
+</ion-content>

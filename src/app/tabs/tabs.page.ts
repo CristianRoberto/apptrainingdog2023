@@ -1,5 +1,47 @@
+// import { Component, OnInit } from '@angular/core';
+// import { Camera, CameraResultType } from '@capacitor/camera'; // Importa Camera
+// import { StorageService } from '../storage.service'; // Importa StorageService
+
+// @Component({
+//   selector: 'app-tabs',
+//   templateUrl: 'tabs.page.html',
+//   styleUrls: ['tabs.page.scss']
+// })
+// export class TabsPage implements OnInit {
+//   constructor(private storage: StorageService) {}
+
+//   ngOnInit() {}
+
+//   // async abrirCamara() {
+//   //   try {
+//   //     const image = await Camera.getPhoto({ // Utiliza Camera.getPhoto directamente
+//   //       quality: 90,
+//   //       allowEditing: true,
+//   //       resultType: CameraResultType.Uri
+//   //     });
+      
+//   //     // Aquí puedes procesar la imagen capturada si es necesario
+//   //     console.log('Imagen capturada:', image);
+//   //   } catch (error) {
+//   //     console.error('Error al abrir la cámara:', error);
+//   //   }
+//   // }
+// }
+
+
+
+
+
+
+
 import { Component, OnInit } from '@angular/core';
+import {  Camera, CameraResultType, CameraSource } from '@capacitor/camera'; // Importa Camera
 import {StorageService} from '../storage.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Plugins } from '@capacitor/core';
+// import { DogDetailsModalPage } from '../../../dog-details-modal/dog-details-modal.page';
+import { DogDetailsModalComponent } from '../components/dog-details-modal/dog-details-modal.component';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabs',
@@ -7,7 +49,9 @@ import {StorageService} from '../storage.service';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage implements OnInit {
-  constructor(private storage:StorageService) { }
+   photo: SafeResourceUrl | any;
+
+  constructor(private storage:StorageService,private sanitizer: DomSanitizer, private modalController: ModalController) { }
   ngOnInit() {
 
     //mira en el local store al ejecutar esta pantalla tabs
@@ -16,41 +60,97 @@ export class TabsPage implements OnInit {
      // window.location.href="/princi";
     }    
 
+
+// async abrirCamara() {
+//   try {
+//     const image = await Camera.getPhoto({
+//       quality: 90,
+//       allowEditing: true,
+//       resultType: CameraResultType.Uri
+//     });
+    
+//     // Aquí puedes procesar la imagen capturada si es necesario
+//     console.log('Cámara abierta');
+//     console.log('Imagen capturada:', image);
+//   } catch (error) {
+//     console.error('Error al abrir la cámara:', error);
+//   }
+// }
+
+
+// async abrirCamara() {
+//   try {
+//     const image = await Plugins['Camera']['getPhoto']({
+//       quality: 100,
+//       allowEditing: false,
+//       resultType: CameraResultType.DataUrl,
+//       source: CameraSource.Camera
+//     });
+
+//     this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && image.dataUrl);
+//          console.log('Cámara abierta');
+//          console.log('Imagen capturada:', image);
+//   } catch (error) {
+//     console.error('Error al abrir la cámara:', error);
+//   }
+// }
+
+
+
+async abrirCamara() {
+  try {
+    // const image = await Plugins.Camera.getPhoto({
+    const image = await Plugins['Camera']['getPhoto']({
+
+      quality: 100,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera
+    });
+
+    const modal = await this.modalController.create({
+      component: DogDetailsModalComponent,
+      componentProps: {
+        photo: image && image.dataUrl,
+        // description: 'Descripción del perro',
+        // location: 'Ubicación del perro'
+      }
+    });
+    await modal.present();
+  } catch (error) {
+    console.error('Error al abrir la cámara:', error);
   }
-
-
-  /*
-  CerrarSession(){
-   this.storage.CerrarSession();
-  }
-  public chartColors =[
-    { // first color
-      backgroundColor: 'rgba(25,10,24,0.2)',
-      borderColor: 'rgba(225,10,24,0.2)',
-      pointBackgroundColor: 'rgba(225,10,24,0.2)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(225,10,24,0.2)'
-    },
-    { // first color
-      backgroundColor: 'rgba(225,10,24,0.2)',
-      borderColor: 'rgba(225,10,24,0.2)',
-      pointBackgroundColor: 'rgba(225,10,24,0.2)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(225,10,24,0.2)'
-    }
-  ];
-
-  public barChartType = 'bar';
-  public barChartLabels = ['1', '2', '3', '4', '5', '6', '7'];
-  public barChartLegend = true;
-
-  public barChartData= [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'ECG',},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'RSP'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'TMP'}
-  ];
-
 }
-*/
+}
+
+
+
+
+
+//   import { Component, OnInit } from '@angular/core';
+// import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+// import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
+// @Component({
+//   selector: 'camera',
+//   templateUrl: './camera.component.html',
+//   styleUrls: ['./camera.component.scss'],
+// })
+// export class CameraComponent implements OnInit {
+//   photo: SafeResourceUrl;
+
+//   constructor(private sanitizer: DomSanitizer) { }
+
+//   ngOnInit() {}
+
+//   async takePicture() {
+//     const image = await Plugins.Camera.getPhoto({
+//       quality: 100,
+//       allowEditing: false,
+//       resultType: CameraResultType.DataUrl,
+//       source: CameraSource.Camera
+//     });
+
+//     this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
+//   }
+// }

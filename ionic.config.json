@@ -1,7 +1,8 @@
 {
   "name": "appdog",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

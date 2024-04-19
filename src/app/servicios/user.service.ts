@@ -8,16 +8,9 @@ import { Observable, throwError } from 'rxjs';
 })
 
 export class UserService {
-//  get_logi(correo: any) {
-  //  throw new Error('Method not implemented.');
-  //}
  
   //url:any ='https://api.marinosalava.com/';
   url:any ='http://127.0.0.1:5000';
-
-  
-  
-
 
   constructor(private http:HttpClient) {   
   }
@@ -56,8 +49,6 @@ export class UserService {
         {headers:{"Content-Type":"application/json"}});
     }
       
-
-
   postuser(users: any){
     return this.http.post(`${this.url}`+ `/users`, users,
   {headers:{"Content-Type":"application/json"}}).toPromise()
@@ -67,10 +58,10 @@ export class UserService {
     return this.http.delete(`${this.url}`+ `/users`+ `/${id}`,
     {headers:{"Content-Type":"application/json"}}).toPromise()
   }
+
   updateUsuario(id: any, camposActualizados: FormData): Observable<any> {
     return this.http.put<any>(`${this.url}/users/${id}`, camposActualizados);
   }
-
 
     //servicio Mascotas//registrar  nuevo mascota
     getMascotas(){
@@ -93,10 +84,12 @@ export class UserService {
       return this.http.get(`${this.url}`+ `/adopciones`,
     {headers:{"Content-Type":"application/json"}}).toPromise()
       }
+
       getAdopcionesById({ idcedula }: { idcedula: any; }): Promise<Object | any> {
         return this.http.get(`${this.url}`+ `/adopciones/${idcedula}`,
         {headers:{"Content-Type":"application/json"}}).toPromise()
       }
+
       postAdopciones(foto: string, formulario: any) {
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
         const url = `${this.url}/adopciones`;
@@ -122,12 +115,12 @@ export class UserService {
         return this.http.put(url, body);
       }
   
-
     //servicio adiestramiens// crud Adiestramientos//
     getAdiestramientos(){
       return this.http.get(`${this.url}`+ `/adiestramientos`,
     {headers:{"Content-Type":"application/json"}}).toPromise()
       }
+
       postAdiestramientos(adopciones: any){
         return this.http.post(`${this.url}`+ `/adiestramientos`, adopciones,
       {headers:{"Content-Type":"application/json"}}).toPromise()
@@ -138,4 +131,8 @@ export class UserService {
         {headers:{"Content-Type":"application/json"}}).toPromise()
       }
 
+      postreporteAbandono(reporteabandono: any){
+        return this.http.post(`${this.url}`+ `/reporteabandono`, reporteabandono,
+      {headers:{"Content-Type":"application/json"}}).toPromise()
+      }
 }

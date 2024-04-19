@@ -8,9 +8,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { PopoverlogiComponent } from './popoverlogi/popoverlogi.component';
 import { PopoverregistroComponent } from './popoverregistro/popoverregistro.component';
-//import { IngresomascotaComponent } from './ingresomascota/ingresomascota.component';
 import { EditarperfilusuarioComponent } from './editarperfilusuario/editarperfilusuario.component';
 import { RegistroadopcionComponent } from './registroadopcion/registroadopcion.component';
+import { DogDetailsModalComponent } from './dog-details-modal/dog-details-modal.component';
+
 
 
 
@@ -20,7 +21,8 @@ import { RegistroadopcionComponent } from './registroadopcion/registroadopcion.c
     PopoverregistroComponent,
     //IngresomascotaComponent,
     EditarperfilusuarioComponent,
-    RegistroadopcionComponent
+    RegistroadopcionComponent,
+    DogDetailsModalComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,7 @@ import { RegistroadopcionComponent } from './registroadopcion/registroadopcion.c
     PopoverlogiComponent,
     PopoverregistroComponent,
     EditarperfilusuarioComponent,
-    //IngresomascotaComponent,
+    DogDetailsModalComponent,
     RegistroadopcionComponent
   ],
 })
