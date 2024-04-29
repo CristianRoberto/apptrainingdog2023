@@ -1,9 +1,3 @@
-////Adaptacion de Pantalla///
-.content-wrapper {
-  height: 100vh; /* Establecer la altura del contenedor principal al 100% del alto de la ventana del navegador */
-  overflow-y: auto; /* Permitir desplazamiento vertical si el contenido excede el tamaño de la pantalla */
-}
-
 .content-inner {
   height: 100%; /* Establecer la altura del contenido interno al 100% del contenedor principal */
   display: flex;

@@ -1,23 +1,44 @@
-  .card{
-    background: rgba(0, 255, 255, 0.246);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+ .card{
+    background: rgba(0, 255, 255, 0.542);
     color: rgb(0, 0, 0);
     font-size: 50px;
+    border-radius: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1.00); /* Subtle box-shadow */
   }
  
 
-  .caracteristica {
-    font-family: 'Georgia', 'Times New Roman', Times, serif;
-    text-align: center;
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 15px 9px rgb(255, 255, 255);
+  /* Background and Borders */
+  // background-color: #f8f8f8;
+  // border-radius: 10px; /* Adjust border radius as desired */
+  // /* Shading and Effects */
+  // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); /* Subtle box-shadow */
+  // /* Responsiveness and Positioning */
+  // margin: 20px auto;
+  // margin-top: -50px;
+  // max-width: 100%;
 
-    margin: 20px auto;
-    max-width: 80%;
+
+  .caracteristica {
+    /* Font and Text Formatting */
+    font-family: 'Georgia', 'Times New Roman', Times, serif; /* Preferred serif fonts */
+    color: #333; /* Adjust text color for better contrast */
+    text-align: center; /* Center alignment */
+    margin-top: -30px;
+
   }
+  
+  /* Media query for mobile devices */
+  @media only screen and (max-width: 768px) {
+    .content-inner {
+      height: 100%; /* Establecer la altura del contenido interno al 100% del contenedor principal */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+  
+
   
   .title {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -36,4 +57,8 @@
     margin-bottom: 8px;
   }
   
+
+  .adoptar:hover{
+    background: rgba(0, 255, 255, 0.542);
+  }
 

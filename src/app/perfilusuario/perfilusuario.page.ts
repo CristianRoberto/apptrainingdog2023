@@ -50,16 +50,49 @@ export class PerfilusuarioPage implements OnInit {
       event.target.complete();
     }, 2000);
   };
+
+
   async search(): Promise<void> {
     const loading = await this.loadingController.create({ message: 'Cargando...' });
     await loading.present();
+
     this.servicio.getAdopcionesById({ idcedula: this.user.cedula }).then(async (re: any) => {
-      this.products = [];
-      this.auxproducts = [];
-      this.products = re;
-      console.log(this.products)
-      this.auxproducts = this.products;
-      await loading.dismiss();
+        this.products = [];
+        this.auxproducts = [];
+        this.products = re;
+        console.log(this.products);
+        this.auxproducts = this.products;
+        await loading.dismiss();
+
+ // Verificar si alguna adopción ha pasado el límite de tiempo
+ this.products.forEach(async (adopcion: { fecharetiro: string | number | Date; retirada: any; idadopcion: any; }) => {
+  console.log(adopcion.fecharetiro);
+  console.log(adopcion.idadopcion);
+
+
+   const fechaRetiro = new Date(adopcion.fecharetiro);
+   const tiempoTranscurrido = new Date().getTime() - fechaRetiro.getTime();
+   const diasTranscurridos = Math.floor(tiempoTranscurrido / (1000 * 3600 * 24));
+
+      if (diasTranscurridos >= 5 && !adopcion.retirada) {
+      console.log("ingreso a la condicion if")
+
+      // Eliminar la adopción del perfil del usuario
+      await this.servicio.deleteAdopciones(adopcion.idadopcion);
+
+      //   // Agregar la mascota nuevamente a la lista de adopciones disponibles
+      await this.servicio.postMascotas(adopcion);
+
+      //   // Actualizar la lista de adopciones del usuario (opcional)
+      this.products = this.products.filter((item: { id: any; }) => item.id !== adopcion.idadopcion);
+      }
+});
+
+
+
+
+
+
       if (this.products.length === 0) {
         // Mostrar mensaje de que no hay adopciones
         const alert = await this.alertController.create({

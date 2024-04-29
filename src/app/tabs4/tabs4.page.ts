@@ -50,6 +50,31 @@ this.user.apellidos = this.user.apellidos.toString().toUpperCase();
     }
 
 
+      // Variable para controlar el estado de la actualización
+  isRefreshing: boolean = false; 
+
+
+
+  handleRefresh(event: any): void {
+    if (!event || !event.detail) {
+      return;
+    }
+  
+    if (this.isRefreshing) {
+      return;
+    }
+    this.isRefreshing = true; // Marca la actualización como en curso
+    this.search().then(() => {
+      // Realiza cualquier otra acción necesaria
+      // Reinicia la variable isRefreshing para futuras actualizaciones
+      this.isRefreshing = false;
+      event.detail.complete(); // Marca la actualización como completada
+    }).catch(() => {
+      // En caso de error, también se debe restablecer isRefreshing
+      this.isRefreshing = false;
+      event.detail.complete();
+    });
+  }
 
     //realiza la busqueda en la base de datos llama al servicio
     async search(): Promise<void>{

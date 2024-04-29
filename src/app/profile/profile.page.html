@@ -5,7 +5,6 @@
 		</ion-buttons>
 		<ion-title class="titulo" style="font-family: Georgia, 'Times New Roman', Times, serif;">Mascota
 			Seleccionada</ion-title>
-
 		<div slot="end">
 			<svg version="1.0" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 				x="0px" y="0px" viewBox="0 0 2500 100" style="enable-background:new 0 0 2020 2020;"
@@ -182,10 +181,15 @@
 		</div>
 	</ion-toolbar>
 </ion-header>
-<ion-content color="success">
-	<ion-col sizeMd="4" offsetMd="4">
-		<div class="caracteristica1" *ngFor="let character of chracter">
-			<ion-card class="ion-text-center">
+
+<ion-content>
+
+
+<!-- <ion-content color="dark" class="content-wrapper"> -->
+<div class="content-inner" >
+
+		<div class="caracteristica1" *ngFor="let character of chracter" >
+			<ion-card class="ion-text-center" >
 				<ion-card-content>
 					<img src="{{character.foto}}" height="300px" width="700px" style="border-radius: 10px;">
 					<ion-card-title class="card">
@@ -194,8 +198,6 @@
 				</ion-card-content>
 			</ion-card>
 		</div>
-
-
 
 		<div class="caracteristica" *ngFor="let character of chracter" style="line-height: 0;">
 			<br>
@@ -211,20 +213,20 @@
 				<h3>Descripción: {{character.descripcion}}</h3>
 			</div>
 		</div>
+		<button 
+		style="margin-top: -10px;"
+		class="adoptar" 
+		(click)="componenteadoptar()">
+		<br>Realizar adopcion<br><br>
+	</button>
+</div>	
 
-
-	</ion-col>
-	<button class="adoptar" (click)="componenteadoptar()"><br>Realizar adopcion<br><br></button><br>
 	<footer>
-
 		<div class="card-body" style="border: aqua 0.5px solid; text-align: center;">
 			<h2> CONTACTANOS<BR>Y<BR>SIGUENOS </h2>
 		</div>
 		<div class="container-footer-all">
-
 			<div class="container-body">
-
-
 
 				<div class="colum1">
 					<h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Mas

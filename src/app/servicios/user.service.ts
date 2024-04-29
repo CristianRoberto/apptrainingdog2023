@@ -8,8 +8,7 @@ import { Observable, throwError } from 'rxjs';
 })
 
 export class UserService {
- 
-  //url:any ='https://api.marinosalava.com/';
+    //url:any ='https://api.marinosalava.com/';
   url:any ='http://127.0.0.1:5000';
 
   constructor(private http:HttpClient) {   
@@ -32,6 +31,7 @@ export class UserService {
   Token():Observable<any>{
      return this.http.get(`${environment.apiUrl}/usrs`);
   }
+
 
   //servicioUsuario//registrar  nuevo usuarios
   getusuarios(){
@@ -79,60 +79,60 @@ export class UserService {
       {headers:{"Content-Type":"application/json"}}).toPromise()
     }
    
-   //servicio Adopcion
-    getAdopciones(){
-      return this.http.get(`${this.url}`+ `/adopciones`,
-    {headers:{"Content-Type":"application/json"}}).toPromise()
-      }
+  //servicio Adopcion
+  getAdopciones(){
+  return this.http.get(`${this.url}`+ `/adopciones`,
+  {headers:{"Content-Type":"application/json"}}).toPromise()
+  }
 
-      getAdopcionesById({ idcedula }: { idcedula: any; }): Promise<Object | any> {
-        return this.http.get(`${this.url}`+ `/adopciones/${idcedula}`,
-        {headers:{"Content-Type":"application/json"}}).toPromise()
-      }
+  getAdopcionesById({ idcedula }: { idcedula: any; }): Promise<Object | any> {
+  return this.http.get(`${this.url}`+ `/adopciones/${idcedula}`,
+  {headers:{"Content-Type":"application/json"}}).toPromise()
+  }
 
-      postAdopciones(foto: string, formulario: any) {
-        const headers = new HttpHeaders().set('Content-Type', 'application/json');
-        const url = `${this.url}/adopciones`;
-        // Agregar la imagen al formulario si no es null
-        if (foto) {
-          formulario.foto = foto;
-        }
-      
-        return this.http.post(url, JSON.stringify(formulario), { headers }).toPromise();
-      }
-    
-      deleteAdopciones(idadopcion:any){
-        return this.http.delete(`${this.url}`+ `/adopciones` + `/${idadopcion}`,
-        {headers:{"Content-Type":"application/json"}}).toPromise()
-      }
-    onUpdateAdopciones(idadopcion: any, camposActualizados: FormData): Observable<any> {
-       return this.http.put<any>(`${this.url}/adopciones/${idadopcion}`, camposActualizados);
-     }
-    
-      updateEstadoAdopcion(idadopcion: any, nuevoEstado: any): Observable<any> {
-        const url = `${this.url}/adopciones/${idadopcion}`;
-        const body = { estadoAdopcion: nuevoEstado };
-        return this.http.put(url, body);
-      }
-  
-    //servicio adiestramiens// crud Adiestramientos//
-    getAdiestramientos(){
-      return this.http.get(`${this.url}`+ `/adiestramientos`,
-    {headers:{"Content-Type":"application/json"}}).toPromise()
-      }
+  postAdopciones(foto: string, formulario: any) {
+  const headers = new HttpHeaders().set('Content-Type', 'application/json');
+  const url = `${this.url}/adopciones`;
+  // Agregar la imagen al formulario si no es null
+  if (foto) {
+  formulario.foto = foto;
+  }
 
-      postAdiestramientos(adopciones: any){
-        return this.http.post(`${this.url}`+ `/adiestramientos`, adopciones,
-      {headers:{"Content-Type":"application/json"}}).toPromise()
-      }
+  return this.http.post(url, JSON.stringify(formulario), { headers }).toPromise();
+  }
 
-      deleteAdiestramientos(id:any){
-        return this.http.delete(`${this.url}`+ `/adiestramientos` + `/${id}`,
-        {headers:{"Content-Type":"application/json"}}).toPromise()
-      }
+  deleteAdopciones(idadopcion:any){
+  return this.http.delete(`${this.url}`+ `/adopciones` + `/${idadopcion}`,
+  {headers:{"Content-Type":"application/json"}}).toPromise()
+  }
+  onUpdateAdopciones(idadopcion: any, camposActualizados: FormData): Observable<any> {
+  return this.http.put<any>(`${this.url}/adopciones/${idadopcion}`, camposActualizados);
+  }
 
-      postreporteAbandono(reporteabandono: any){
-        return this.http.post(`${this.url}`+ `/reporteabandono`, reporteabandono,
-      {headers:{"Content-Type":"application/json"}}).toPromise()
-      }
+  updateEstadoAdopcion(idadopcion: any, nuevoEstado: any): Observable<any> {
+  const url = `${this.url}/adopciones/${idadopcion}`;
+  const body = { estadoAdopcion: nuevoEstado };
+  return this.http.put(url, body);
+  }
+
+  //servicio adiestramiens// crud Adiestramientos//
+  getAdiestramientos(){
+  return this.http.get(`${this.url}`+ `/adiestramientos`,
+  {headers:{"Content-Type":"application/json"}}).toPromise()
+  }
+
+  postAdiestramientos(adopciones: any){
+  return this.http.post(`${this.url}`+ `/adiestramientos`, adopciones,
+  {headers:{"Content-Type":"application/json"}}).toPromise()
+  }
+
+  deleteAdiestramientos(id:any){
+  return this.http.delete(`${this.url}`+ `/adiestramientos` + `/${id}`,
+  {headers:{"Content-Type":"application/json"}}).toPromise()
+  }
+
+  postreporteAbandono(reporteabandono: any){
+  return this.http.post(`${this.url}`+ `/reporteabandono`, reporteabandono,
+  {headers:{"Content-Type":"application/json"}}).toPromise()
+  }
 }

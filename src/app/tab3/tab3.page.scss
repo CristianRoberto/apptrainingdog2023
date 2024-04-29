@@ -1,3 +1,34 @@
+/* Reduce search bar width */
+.col2 ion-searchbar {
+  width: 70%;
+}
+
+/* Adjust card aspect ratio, margin, and text size */
+ion-card {
+  height: 250px; /* Adjust height */
+  margin: 5px; /* Adjust margin */
+}
+
+ion-card-title, ion-card-header {
+  font-size: 14px; /* Adjust font size */
+}
+
+/* Truncate long text lines with ellipsis */
+ion-card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Adjust image size (if needed) */
+ion-img {
+  height: 100px; /* Adjust height */
+  border-radius: 10px;
+
+}
+
+
+    
+    
     .button-total {
       font-size: 14px; /* Cambiar el tamaño de la tipografía */
       text-transform: uppercase; /* Texto en mayúsculas */
@@ -23,11 +54,7 @@
       width: 300px;
       margin-top: 13px;
     }
-    
-    ion-img {
-      height: 100px;
-    }
-    
+       
     .is {
       font-size: 25px;
       position: absolute;

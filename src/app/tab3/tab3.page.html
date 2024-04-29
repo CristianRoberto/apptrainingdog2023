@@ -2,9 +2,10 @@
 	<ion-toolbar color="dark">
 		<ion-buttons slot="start" >
 			<ion-menu-button class="botonmenu" style="font-family: Georgia, 'Times New Roman', Times, serif;"></ion-menu-button>
-		</ion-buttons>
-		
-	  <ion-title class="titulo" style="font-family: Georgia, 'Times New Roman', Times, serif;">MASCOTAS DISPONIBLES</ion-title>
+		</ion-buttons>	
+	  <ion-title class="titulo" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+		MASCOTAS DISPONIBLES
+	  </ion-title>
 	   <div slot="end">
 		<svg version="1.0" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 		viewBox="0 0 2500 100" style="enable-background:new 0 0 2020 2020;" xml:space="preserve">
@@ -168,9 +169,10 @@
 	  </g>
 		</g>
 		</svg>	
-		</div>
+	   </div>
 	</ion-toolbar>
-  </ion-header>
+</ion-header>
+
 <!-- Default Refresher -->
 <ion-content color="dark">
 	<ion-grid>
@@ -194,37 +196,29 @@
 	   </ion-col>
 	</ion-row>
   	</ion-grid>
-	<ion-content color="dark">
-		
+
+	<ion-content color="dark">	
 		<ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
 			<ion-refresher-content></ion-refresher-content>
-		  </ion-refresher>
-		  
-
-
+		</ion-refresher>
 	  <ion-grid>
 		<ion-row  class="row1" >
 			<ion-col class="col1" size-lg="3" size-md="4"   size-sm="4" size-xs="6"  *ngFor="let pro of products; " [routerLink]="['/profile/' + pro.id]" >
-				<ion-card     style="margin: 0px;height: 100%;  ">  
+				<ion-card style="margin: 0px;height: 100%;  ">  
 					<div  >
 					<h1 class="h1" style="text-align: center; font-family: Georgia, 'Times New Roman', Times, serif;color: rgb(103, 99, 99);">Mascota</h1>
-					<ion-img   src="{{pro.foto}}"> </ion-img>
+					<ion-img   src="{{pro.foto}}" > </ion-img>
 					<div class="chip" > 
 					  <ion-chip  style=" background-color: #00eeff; color: black; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
 						<ion-label># {{pro.id}}</ion-label>
 						 </ion-chip >
 					</div>   
-
-
 					<div style="margin-top: -10px;height: 100%;text-align: center;font-size: 20px;"> 
 						<ion-card-header >  
 					Detalles:
-
 					<ion-card-title style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: black;margin-top: 0px;">{{pro.nombreraza}} </ion-card-title>
 				 	color: {{pro.color}}<br>sexo: {{pro.sexo}}
-
-					</ion-card-header>       
-					
+					</ion-card-header>       				
 				</div>   
 				<br>
 					<ion-chip  class="button-total text-center" style="margin: 0px; text-align: center;"  >
@@ -235,9 +229,11 @@
 		  </ion-col>   
 		</ion-row>
 	  </ion-grid>
-					<br>
-        		<ion-img src="/assets/icon/autor.png"></ion-img>
+
+				<br>
+        			<!-- <ion-img src="/assets/icon/autor.png"></ion-img> -->
         		<br>
+				<br><br>
 	</ion-content>
-	</ion-content>
+</ion-content>
 

@@ -32,22 +32,38 @@ export class Tab3Page  implements OnInit {
       this.search();
         }
 
+
+        
+
+
   // Variable para controlar el estado de la actualización
   isRefreshing: boolean = false; 
-  handleRefresh(event: any ): void {
-  if (this.isRefreshing) {
-  return;
-}
-this.isRefreshing = true; // Marca la actualización como en curso
- this.search(); // Realiza la búsqueda de datos
-// // Simula una carga de datos con un retardo de 2 segundos
-setTimeout(() => {
-this.isRefreshing = false; // Marca la actualización como completada
-// // Realiza cualquier otra acción necesaria
-// // Reinicia la variable isRefreshing para futuras actualizaciones
-this.isRefreshing = false;
-}, 2000);
-}
+
+
+
+  handleRefresh(event: any): void {
+    if (!event || !event.detail) {
+      return;
+    }
+  
+    if (this.isRefreshing) {
+      return;
+    }
+    this.isRefreshing = true; // Marca la actualización como en curso
+    this.search().then(() => {
+      // Realiza cualquier otra acción necesaria
+      // Reinicia la variable isRefreshing para futuras actualizaciones
+      this.isRefreshing = false;
+      event.detail.complete(); // Marca la actualización como completada
+    }).catch(() => {
+      // En caso de error, también se debe restablecer isRefreshing
+      this.isRefreshing = false;
+      event.detail.complete();
+    });
+  }
+  
+
+
 
   async search(): Promise<void>{
     this.handleRefresh(event);
