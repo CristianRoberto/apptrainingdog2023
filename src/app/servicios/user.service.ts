@@ -32,7 +32,6 @@ export class UserService {
      return this.http.get(`${environment.apiUrl}/usrs`);
   }
 
-
   //servicioUsuario//registrar  nuevo usuarios
   getusuarios(){
     return this.http.get(`${this.url}`+ `/users`,
@@ -78,8 +77,13 @@ export class UserService {
       return this.http.delete(`${this.url}`+ `/mascotas`+`/${id}`,
       {headers:{"Content-Type":"application/json"}}).toPromise()
     }
+
+    desactivarMascota(idMascota: number) {
+      return this.http.put(`${this.url}`+ `/mascotasactivo`+`/${idMascota}`,
+      {headers:{"Content-Type":"application/json"}}).toPromise()
+    }
    
-  //servicio Adopcion
+  ////////////// servicio Adopcion ////////////////////
   getAdopciones(){
   return this.http.get(`${this.url}`+ `/adopciones`,
   {headers:{"Content-Type":"application/json"}}).toPromise()

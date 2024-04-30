@@ -16,11 +16,11 @@ export class RegistroadopcionComponent implements OnInit {
   fechaSeleccionada: string = '';
   elementos: any = {
     idmascota: "",
-    idcedula: "" ,// Agregamos el campo idcedula en el objeto elementos
+    idcedula: "",// Agregamos el campo idcedula en el objeto elementos
     nombreusuario: "",
     apellidousuario: "",
     fecharetiro: ""
-    
+
   };
 
   minDate: string = format(new Date(), 'yyyy-MM-dd'); // Inicialización directa
@@ -46,7 +46,7 @@ export class RegistroadopcionComponent implements OnInit {
     public alertController: AlertController,
     private router: Router,
     public navCtrl: NavController
-  ) {}
+  ) { }
 
 
 
@@ -58,10 +58,10 @@ export class RegistroadopcionComponent implements OnInit {
 
 
   async ngOnInit(): Promise<void> {
-   // Obtener la fecha actual
-   const today = new Date();
-   // Formatear la fecha en el formato deseado (yyyy-MM-dd)
-   this.minDate = format(today, 'yyyy-MM-dd');
+    // Obtener la fecha actual
+    const today = new Date();
+    // Formatear la fecha en el formato deseado (yyyy-MM-dd)
+    this.minDate = format(today, 'yyyy-MM-dd');
 
     this.user = window.localStorage.getItem('datos');
     this.user = JSON.parse(this.user);
@@ -101,21 +101,21 @@ export class RegistroadopcionComponent implements OnInit {
     await alert.present();
   }
 
-  
-   // Variable para controlar el estado de la actualización
-   isRefreshing: boolean = false; 
-    handleRefresh(event: any ): void {
+
+  // Variable para controlar el estado de la actualización
+  isRefreshing: boolean = false;
+  handleRefresh(event: any): void {
     if (this.isRefreshing) {
-    return; // Evita iniciar una nueva actualización mientras una ya está en curso
-  }
-  this.isRefreshing = true; // Marca la actualización como en curso
-// // // Simula una carga de datos con un retardo de 2 segundos
-  setTimeout(() => {
-  this.isRefreshing = false; // Marca la actualización como completada
-// // // Realiza cualquier otra acción necesaria
-// // // Reinicia la variable isRefreshing para futuras actualizaciones
-  this.isRefreshing = false;
-  }, 2000);
+      return; // Evita iniciar una nueva actualización mientras una ya está en curso
+    }
+    this.isRefreshing = true; // Marca la actualización como en curso
+    // // // Simula una carga de datos con un retardo de 2 segundos
+    setTimeout(() => {
+      this.isRefreshing = false; // Marca la actualización como completada
+      // // // Realiza cualquier otra acción necesaria
+      // // // Reinicia la variable isRefreshing para futuras actualizaciones
+      this.isRefreshing = false;
+    }, 2000);
   }
 
 
@@ -244,7 +244,4 @@ export class RegistroadopcionComponent implements OnInit {
     });
     toast.present();
   }
-
- 
-
 }
